@@ -48,8 +48,8 @@ export default function SideBar({ open, setOpen, setopenModal, item }: any) {
                   </div>
                   <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                     <div className="px-4 sm:px-6">
-                      {item.map((item: any) => (
-                        <div>
+                      {item.map((item: any, id: any) => (
+                        <div key={id}>
                           {" "}
                           <Link
                             href={item.path}

@@ -108,8 +108,8 @@ export default function Layout({ title, children }: any) {
           style={{ top: "10%", left: "5%" }}
         >
           <div className="flex container m-auto">
-            {nav.map((item: any) => (
-              <div className="p-4 text-white font-bold text-lg ">
+            {nav.map((item: any, id: any) => (
+              <div className="p-4 text-white font-bold text-lg " key={id}>
                 <Link
                   href={item.path}
                   className={

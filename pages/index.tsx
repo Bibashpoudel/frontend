@@ -47,10 +47,11 @@ export default function Home() {
                     title: "Application Testing",
                     description: `We test every elemnet of the application: performance, functioning, integrations, security, and usability.`,
                   },
-                ].map((item: any) => (
+                ].map((item: any, id: any) => (
                   <div
                     className="mt-10 relative flex justify-center items-center shadow-md bg-stone-100 rounded-md c-hover "
                     style={{ minHeight: "20rem" }}
+                    key={id}
                   >
                     <div className="flex flex-col p-4 text-center">
                       <div className="p-4 font-bold text-lg">
@@ -72,6 +73,7 @@ export default function Home() {
                 <img
                   className="h-28 max-w-96 w-full rounded-l-md"
                   src="/images/teamwork.jpg"
+                  alt=""
                 ></img>
               </div>
               <div className="flex p-6 items-center justify-center c-moto-text rounded-r-md font-bold w-full max-w-96 max-md:text-lg max-sm:text-sm  text-xl text-white">
@@ -194,8 +196,8 @@ export default function Home() {
                     },
                   ],
                 },
-              ].map((item: any) => (
-                <div className="flex flex-col ">
+              ].map((item: any, id: any) => (
+                <div className="flex flex-col" key={id}>
                   <div className="font-bold">{item.title}</div>
                   {item.items.map((vars: any) => (
                     <>
@@ -228,8 +230,11 @@ export default function Home() {
                     description: "some thing descride",
                     logo: "/images/under.jpg",
                   },
-                ].map((item: any) => (
-                  <div className="flex flex-col justify-center items-center hover:shadow-md hover:scale-105 rounded-md hover:border-t-4 p-2 duration-700">
+                ].map((item: any, id: any) => (
+                  <div
+                    key={id}
+                    className="flex flex-col justify-center items-center hover:shadow-md hover:scale-105 rounded-md hover:border-t-4 p-2 duration-700"
+                  >
                     <div className="h-20 w-20">
                       <img src={item.logo}></img>
                     </div>
