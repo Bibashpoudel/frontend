@@ -1,13 +1,7 @@
-import Carousel from "react-material-ui-carousel";
-
 import Layout from "../components/Layout";
-import Slider from "../components/Slider";
-import Background from "../public/images/abc.webp";
+import React from "react";
 
-import slideImage from "../utils/imageslider";
-
-export default function Home() {
-  console.log(Background);
+export default function Home(): JSX.Element {
   return (
     <>
       <Layout title={"Home Page"}>
@@ -198,11 +192,11 @@ export default function Home() {
                 },
               ].map((item: any, id: any) => (
                 <div className="flex flex-col" key={id}>
-                  <div className="font-bold">{item.title}</div>
-                  {item.items.map((vars: any) => (
-                    <>
-                      <div>{vars.name}</div>
-                    </>
+                  <div className="font-bold" key={id}>
+                    {item.title}
+                  </div>
+                  {item.items.map((vars: any, abc: any) => (
+                    <div key={abc}>{vars.name}</div>
                   ))}
                 </div>
               ))}
