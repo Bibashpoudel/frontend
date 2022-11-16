@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+:root {
+  color-scheme: only light;
+}
 html,
 body {
   padding: 0;
@@ -383,7 +385,7 @@ img {
 .contactForm .inputBox textarea {
   width: 100% !important;
   padding: 0.5rem 0 !important;
-  font-size: 1.6rem !important;
+  font-size: 1rem !important;
   margin: 1rem 0 !important;
   border: none !important;
   border-radius: 0rem !important;
@@ -422,6 +424,11 @@ img {
 }
 .contactForm .inputBox button:hover {
   background-color: #085275;
+}
+@media only screen and (max-width: 1020px) {
+  .contactForm form {
+    padding: 2rem;
+  }
 }
 @media only screen and (max-width: 450px) {
   .containers .contactInfo .boxs .texts {

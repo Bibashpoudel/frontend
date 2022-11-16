@@ -5,16 +5,46 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useRouter } from "next/router";
 
 export default function Contactus() {
   const {
     handleSubmit,
     register,
+    setValue,
     formState: { errors },
   } = useForm();
 
-  const submitHandler = ({ fullname, email, phone, message }: any) => {
+  const router = useRouter();
+
+  const submitHandler = async ({ fullname, email, phone, message }: any) => {
     console.log(fullname, email, phone, message);
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5001/api/v1/contact/send-message",
+        {
+          fullName: fullname,
+          email: email,
+          phone: phone,
+          message: message,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (data) {
+        Swal.fire("Successfull!", "Your message has been deliered!", "success");
+        setValue("email", "");
+        setValue("phone", "");
+        setValue("fullname", "");
+        setValue("message", "");
+      }
+    } catch (error) {}
   };
   return (
     <Layout title={"Contact Us"}>
@@ -63,7 +93,7 @@ export default function Contactus() {
               </div>
               <div className="texts">
                 <h3>Phone</h3>
-                <p>+977 9863025214</p>
+                <p>+977 9748307013</p>
               </div>
             </div>
           </div>
@@ -107,12 +137,16 @@ export default function Contactus() {
                 </div>
               )}
               <div className="inputBox">
-                <input type="phone" name="phone" autoComplete="off"></input>
+                <input
+                  type="phone"
+                  {...register("phone", {})}
+                  name="phone"
+                  autoComplete="off"
+                ></input>
                 <span>Phone</span>
               </div>
               <div className="inputBox">
                 <textarea
-                  type="text"
                   {...register("message", {
                     required: "Please Enter your Message",
                   })}

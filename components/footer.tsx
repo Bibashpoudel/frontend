@@ -6,15 +6,41 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 import Link from "next/link";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useRouter } from "next/router";
+
 export default function Footer({ nav }: any) {
   const {
     handleSubmit,
     register,
+    setValue,
     formState: { errors },
   } = useForm();
 
-  const submitHandler = ({ email }: any) => {
-    console.log(email);
+  const router = useRouter();
+
+  const submitHandler = async ({ email }: any) => {
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5001/api/v1/contact/news-letter",
+        {
+          email,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (data) {
+        Swal.fire("Successfull!", "Your message has been deliered!", "success");
+        setValue("email", "");
+        setTimeout(() => {
+          router.push(router.pathname);
+        }, 5000);
+      }
+    } catch (error) {}
   };
   return (
     <div className=" grid grid-cols-1 gap-4 max-md:gap-8 md:grid-cols-2 lg:grid-cols-4 ">
