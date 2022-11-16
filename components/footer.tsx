@@ -74,7 +74,9 @@ export default function Footer() {
                         "
               />
               {errors.email && (
-                <div className="text-red-500">{errors.email.message}</div>
+                <div className="text-red-500">
+                  {(errors.email as any).message}
+                </div>
               )}
             </div>
 
