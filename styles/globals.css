@@ -178,12 +178,20 @@ img {
   color: #0279b1;
 }
 .c-hover {
-  transition: transform 0.8s;
+  transition: transform 1s;
 }
 .c-hover:hover {
   background-color: #0279b1;
   color: white;
   transform: scale(1.1);
+}
+/* social media link design */
+
+.c-icon {
+  transition: transform 0.8s;
+}
+.c-icon:hover {
+  transform: scale(1.5);
 }
 
 .custom-moto {

@@ -109,10 +109,25 @@ export default function Footer({ nav }: any) {
           Follow us on
         </div>
         <div className="flex">
-          <Instagram aria-hidden="true" className="text-red-500"></Instagram>
-          <Facebook aria-hidden="true" style={{ color: "#4267B2" }}></Facebook>
-          <YouTube aria-hidden="true" style={{ color: "#FF0000" }}></YouTube>
-          <Twitter aria-hidden="true" style={{ color: "#1DA1F2" }}></Twitter>
+          <span className="pr-2 c-icon">
+            {" "}
+            <Instagram aria-hidden="true" className="text-red-500 "></Instagram>
+          </span>
+          <span className="pr-2 c-icon">
+            {" "}
+            <Facebook
+              aria-hidden="true"
+              style={{ color: "#4267B2" }}
+            ></Facebook>
+          </span>
+          <span className="pr-2 c-icon">
+            {" "}
+            <YouTube aria-hidden="true" style={{ color: "#FF0000" }}></YouTube>
+          </span>
+          <span className="c-icon">
+            {" "}
+            <Twitter aria-hidden="true" style={{ color: "#1DA1F2" }}></Twitter>
+          </span>
         </div>
         <div className="mt-2 text-gray-500 p-1">
           <SmartphoneIcon className="h-5"></SmartphoneIcon> +977 9748307013

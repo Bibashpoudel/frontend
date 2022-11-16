@@ -125,8 +125,10 @@ export default function Layout({ title, children }: any) {
 
         <main className="">{children}</main>
         <footer>
-          <div className="bg-gray-200 shadow-inner h-auto ">
-            <Footer nav={nav}></Footer>
+          <div className=" bg-gray-200 shadow-inner h-auto ">
+            <div className="container m-auto flex justify-between">
+              <Footer nav={nav}></Footer>
+            </div>
           </div>
           <div className=" flex h-10  justify-center items-center shadow-inner">
             <div>Copyright &#169; 2022 Pace Code</div>
