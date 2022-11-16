@@ -31,7 +31,7 @@ export default function Layout({ title, children }: any) {
   const nav = [
     {
       path: "/",
-      title: "home",
+      title: "Home",
     },
     {
       path: "/our-services",
@@ -47,7 +47,7 @@ export default function Layout({ title, children }: any) {
     },
     {
       path: "/blog",
-      title: "blog",
+      title: "Blog",
     },
   ];
 
@@ -84,10 +84,10 @@ export default function Layout({ title, children }: any) {
             </div>
             <div className="flex">
               <Link href="/">
-                <span className="p-4">Lets talk</span>
+                <span className="p-3 button-primary">Lets talk</span>
               </Link>
               <Link href="/contact-us">
-                <span className=""> Contact Us</span>
+                <span className="button-primary p-3 ml-2"> Contact Us</span>
               </Link>
             </div>
           </nav>
@@ -104,7 +104,7 @@ export default function Layout({ title, children }: any) {
           ))}
         </Carousel>
         <div
-          className="absolute z-50 max-md:hidden"
+          className="absolute z-10 max-md:hidden"
           style={{ top: "10%", left: "5%" }}
         >
           <div className="flex container m-auto">
@@ -126,7 +126,7 @@ export default function Layout({ title, children }: any) {
         <main className="">{children}</main>
         <footer>
           <div className="bg-gray-200 shadow-inner h-auto ">
-            <Footer></Footer>
+            <Footer nav={nav}></Footer>
           </div>
           <div className=" flex h-10  justify-center items-center shadow-inner">
             <div>Copyright &#169; 2022 Pace Code</div>

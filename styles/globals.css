@@ -232,6 +232,17 @@ img {
   text-align: center;
 }
 
+/* top header  buttom design */
+.button-primary {
+  background-color: #0279b1;
+  border-radius: 0.5rem;
+  color: white;
+  cursor: pointer;
+}
+.button-primary:hover {
+  background-color: #126388;
+}
+
 @media only screen and (max-width: 1023px) {
   .custom-bg {
     height: 75rem;

@@ -5,7 +5,8 @@ import SmartphoneIcon from "@mui/icons-material/Smartphone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 import ContactMailIcon from "@mui/icons-material/ContactMail";
-export default function Footer() {
+import Link from "next/link";
+export default function Footer({ nav }: any) {
   const {
     handleSubmit,
     register,
@@ -34,10 +35,11 @@ export default function Footer() {
           Links
         </div>
         <div className="flex flex-col">
-          <div>Our Service</div>
-          <div>Career</div>
-          <div>Blog</div>
-          <div>About Us</div>
+          {nav.map((item: any, id: any) => (
+            <div key={id}>
+              <Link href={item.path}>{item.title}</Link>
+            </div>
+          ))}
         </div>
       </div>
       <div className="flex flex-col p-4">
