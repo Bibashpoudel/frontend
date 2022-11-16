@@ -1,11 +1,26 @@
 import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
 import React from "react";
+import { useForm } from "react-hook-form";
+import SmartphoneIcon from "@mui/icons-material/Smartphone";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
+import ContactMailIcon from "@mui/icons-material/ContactMail";
 export default function Footer() {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
+
+  const submitHandler = ({ email }: any) => {
+    console.log(email);
+  };
   return (
     <div className=" grid grid-cols-1 gap-4 max-md:gap-8 md:grid-cols-2 lg:grid-cols-4 ">
       <div className="flex  flex-col  p-4">
-        <div className="font-bold  text-lg">Abc</div>
+        <div className="font-bold  text-lg" style={{ color: "#0279b1" }}>
+          Pace Code
+        </div>
         <div>
           <p>
             The experties and soultion provide by us help you to rise the
@@ -15,7 +30,9 @@ export default function Footer() {
         </div>
       </div>
       <div className="flex flex-col  p-4">
-        <div className="font-bold  text-lg">Links</div>
+        <div className="font-bold  text-lg" style={{ color: "#0279b1" }}>
+          Links
+        </div>
         <div className="flex flex-col">
           <div>Our Service</div>
           <div>Career</div>
@@ -24,12 +41,22 @@ export default function Footer() {
         </div>
       </div>
       <div className="flex flex-col p-4">
-        <div className="font-bold  text-lg"> News Letter</div>
+        <div className="font-bold  text-lg" style={{ color: "#0279b1" }}>
+          {" "}
+          News Letter
+        </div>
         <div>
-          <form className="">
+          <form className="" onSubmit={handleSubmit(submitHandler)}>
             <div className="">
               <input
                 type="text"
+                {...register("email", {
+                  required: "Please enter email",
+                  pattern: {
+                    value: /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/i,
+                    message: "Please enter valid Email",
+                  },
+                })}
                 placeholder="Email"
                 className="
                         w-full
@@ -46,22 +73,26 @@ export default function Footer() {
                         focus:border-primary
                         "
               />
+              {errors.email && (
+                <div className="text-red-500">{errors.email.message}</div>
+              )}
             </div>
 
             <div className="mt-2  ">
               <input
                 type="submit"
-                value="Sign In"
+                value="Submit"
                 className="
+                        newsLetter
                         w-full
                         rounded-md
                         border
-                        border-green-400
+                        
                         py-3
                         bg-primary
                         text-base text-green
                         cursor-pointer
-                        hover:bg-green-600 hover:text-white
+                        
                         transition
                         "
               />
@@ -70,12 +101,24 @@ export default function Footer() {
         </div>
       </div>
       <div className="flex  flex-col p-4">
-        <div className="font-bold  text-lg">Follow us on</div>
+        <div className="font-bold  text-lg" style={{ color: "#0279b1" }}>
+          Follow us on
+        </div>
         <div className="flex">
           <Instagram aria-hidden="true" className="text-red-500"></Instagram>
           <Facebook aria-hidden="true" style={{ color: "#4267B2" }}></Facebook>
           <YouTube aria-hidden="true" style={{ color: "#FF0000" }}></YouTube>
           <Twitter aria-hidden="true" style={{ color: "#1DA1F2" }}></Twitter>
+        </div>
+        <div className="mt-2 text-gray-500 p-1">
+          <SmartphoneIcon className="h-5"></SmartphoneIcon> +977 9748307013
+        </div>
+        <div className="text-gray-500 p-1">
+          <LocationOnIcon className="h-5"></LocationOnIcon> Kathmandu, Nepal
+        </div>
+        <div className="text-gray-500 p-1">
+          <ContactMailIcon className="h-5"></ContactMailIcon>{" "}
+          info@pacecode.com.np
         </div>
       </div>
     </div>

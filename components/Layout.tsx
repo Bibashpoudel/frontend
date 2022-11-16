@@ -129,7 +129,7 @@ export default function Layout({ title, children }: any) {
             <Footer></Footer>
           </div>
           <div className=" flex h-10  justify-center items-center shadow-inner">
-            <div>Copyright &#169; 2022 Bibash</div>
+            <div>Copyright &#169; 2022 Pace Code</div>
           </div>
         </footer>
       </div>

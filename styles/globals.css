@@ -207,9 +207,42 @@ img {
   background-color: #0279b1;
   color: white;
 }
+
+/* hiding the slider navigation */
+.css-1m9128y {
+  display: none;
+}
+/* design for fotter newsletter sign in */
+
+.newsLetter {
+  border-color: #0279b1;
+  color: #0279b1;
+}
+.newsLetter:hover {
+  background-color: #0279b1;
+  color: White;
+}
+
+/* designing the custom slider */
+
+.c-slider {
+  top: 40%;
+  left: 35%;
+  width: 30rem;
+  text-align: center;
+}
+
 @media only screen and (max-width: 1023px) {
   .custom-bg {
     height: 75rem;
+  }
+  .c-slider {
+    left: 25%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .c-slider {
+    left: 15%;
   }
 }
 
@@ -220,10 +253,17 @@ img {
   .container {
     max-width: 500px;
   }
+  .c-slider {
+    left: 10%;
+  }
 }
 @media only screen and (max-width: 500px) {
   .container {
     max-width: 400px;
+  }
+  .c-slider {
+    left: 0%;
+    width: 100%;
   }
 }
 @media only screen and (max-width: 400px) {
@@ -268,9 +308,4 @@ img {
     transform: translateY(-1200%);
     opacity: 1;
   }
-}
-
-/* hiding the slider navigation */
-.css-1m9128y {
-  display: none;
 }

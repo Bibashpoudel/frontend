@@ -205,7 +205,13 @@ export default function Home(): JSX.Element {
           <div className="container m-auto">
             <div className="flex flex-col ">
               <div className="flex justify-center">
-                <div className="font-bold text-2xl mt-10"> Our Models</div>
+                <div
+                  className="font-bold text-2xl mt-10 mb-4"
+                  style={{ color: "#0279b1" }}
+                >
+                  {" "}
+                  Our Models
+                </div>
               </div>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 sm:grid-cols-2  lg:grid-cols-3">
                 {[
@@ -224,21 +230,25 @@ export default function Home(): JSX.Element {
                     description: "some thing descride",
                     logo: "/images/under.jpg",
                   },
+                  {
+                    title: "Dedicated team",
+                    description: "some thing descride",
+                    logo: "/images/under.jpg",
+                  },
                 ].map((item: any, id: any) => (
                   <div
                     key={id}
-                    className="flex flex-col justify-center items-center hover:shadow-md hover:scale-105 rounded-md hover:border-t-4 p-2 duration-700"
+                    className="flex flex-col justify-center max-sm:items-start max-sm:justify-start items-center hover:shadow-md hover:scale-105 rounded-md hover:border-t-4 p-2 duration-700"
                   >
                     <div className="h-20 w-20">
                       <img src={item.logo}></img>
                     </div>
-                    <div className="font-bold text-lg">{item.title}</div>
+                    <div className="font-bold text-lg hover:primary">
+                      {item.title}
+                    </div>
                     <div className="">{item.description}</div>
                   </div>
                 ))}
-                <div>Bibash</div>
-                <div>Bibash</div>
-                <div>Bibash</div>
               </div>
             </div>
           </div>

@@ -8,10 +8,7 @@ export default function Slider({ image }: any) {
     <Paper>
       <div></div>
       <img className="w-full max-h-96 " src={image.image} alt="bibash"></img>
-      <div
-        className="absolute font-bold text-3xl text-white"
-        style={{ left: "30%", top: "40%" }}
-      >
+      <div className="absolute font-bold text-3xl text-white c-slider">
         ENTERPRISE SYSTEM DEVELOPMENT
       </div>
     </Paper>
