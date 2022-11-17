@@ -1,7 +1,7 @@
 const slideImage: any = [
   {
     id: 1,
-    image: "/images/house.jpg",
+    image: "/images/theam.jpg",
     url: "",
   },
 ];

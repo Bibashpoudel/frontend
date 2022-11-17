@@ -57,7 +57,7 @@ export default function Layout({ title, children }: any) {
         <title>{title ? title + " - Pace Code" : "Market Place"}</title>
         <meta
           name="description"
-          content="Best IT company and better solution for yur business"
+          content="Best IT company and better solution for yur business "
         />
         <meta name="color-scheme" content="light only"></meta>
         <link rel="icon" href="images/logo.png" type="image/x-icon"></link>

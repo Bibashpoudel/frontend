@@ -218,22 +218,22 @@ export default function Home(): JSX.Element {
                   {
                     title: "Employee Satifaction",
                     description: "some thing descride",
-                    logo: "/images/under.jpg",
+                    logo: "/images/logo.jpg",
                   },
                   {
                     title: "Aglie Framework",
                     description: "some thing descride",
-                    logo: "/images/under.jpg",
+                    logo: "/images/logo.png",
                   },
                   {
                     title: "Customer Satifaction",
                     description: "some thing descride",
-                    logo: "/images/under.jpg",
+                    logo: "/images/logo.png",
                   },
                   {
                     title: "Dedicated team",
                     description: "some thing descride",
-                    logo: "/images/under.jpg",
+                    logo: "/images/logo.png",
                   },
                 ].map((item: any, id: any) => (
                   <div

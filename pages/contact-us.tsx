@@ -24,7 +24,7 @@ export default function Contactus() {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5001/api/v1/contact/send-message",
+        "http://146.190.93.23/api/v1/contact/send-message",
         {
           fullName: fullname,
           email: email,
@@ -34,11 +34,16 @@ export default function Contactus() {
         {
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
           },
         }
       );
       if (data) {
-        Swal.fire("Successfull!", "Your message has been deliered!", "success");
+        Swal.fire(
+          "Successfull!",
+          "Your message has been delivered!",
+          "success"
+        );
         setValue("email", "");
         setValue("phone", "");
         setValue("fullname", "");

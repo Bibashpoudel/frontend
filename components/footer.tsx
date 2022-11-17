@@ -23,18 +23,23 @@ export default function Footer({ nav }: any) {
   const submitHandler = async ({ email }: any) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:5001/api/v1/contact/news-letter",
+        "http://146.190.93.23/api/v1/contact/news-letter",
         {
           email,
         },
         {
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
           },
         }
       );
       if (data) {
-        Swal.fire("Successfull!", "Your message has been deliered!", "success");
+        Swal.fire(
+          "Successfull!",
+          "Your email has been save successfully!",
+          "success"
+        );
         setValue("email", "");
         setTimeout(() => {
           router.push(router.pathname);
