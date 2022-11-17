@@ -1,6 +1,5 @@
 import axios from "axios";
 
-const session = getToken() || {};
 //stage.mengedegna.com
 const API = axios.create({
   baseURL: process.env.API_ENDPOINT || "http://locahlost:5000",
