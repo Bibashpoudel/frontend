@@ -1,7 +1,5 @@
 import axios from "axios";
 
-import getToken from "./getToken";
-
 const session = getToken() || {};
 //stage.mengedegna.com
 const API = axios.create({
