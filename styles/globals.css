@@ -177,16 +177,26 @@ img {
 
 /* home page custom image */
 .c-active {
-  color: #0279b1;
+  color: #00ff11e1;
 }
 .c-hover {
   transition: transform 1s;
 }
 .c-hover:hover {
   background-color: #0279b1;
-  color: white;
+  color: white !important;
   transform: scale(1.1);
 }
+.hover-text {
+  color: #0279b1;
+}
+.c-hover:hover .hover-text {
+  color: white !important;
+}
+.c-text {
+  color: #0279b1;
+}
+
 /* social media link design */
 
 .c-icon {

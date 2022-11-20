@@ -2,6 +2,169 @@ import Layout from "../components/Layout";
 import React from "react";
 
 export default function Home(): JSX.Element {
+  const services = [
+    {
+      title: "Custom Software Development",
+      description:
+        "We help enterprises develop their custom software as per the needs not compromising on quality with the help of Our highly experienced team, top engineering practice and creativity.",
+    },
+    {
+      title: "Web and Moblie App Development",
+      description:
+        "Now integrate your web application to the comfort of your hand as we are experts to incorporate and develop both web and mobile applications using cross platform and native framework.",
+    },
+    {
+      title: "Enterprise System Development",
+      description:
+        "Our highly experienced team, top engineering practice and creativity will ensure a highly integrated Enterprise system that will support your business process, information flows, reporting and data analysis.",
+    },
+    {
+      title: "Application Testing",
+      description:
+        "We scrutinize each and every functionality of an application, its integration, security, and usability.Our team makes sure ease in usability of the application.",
+    },
+    {
+      title: "Maintenance & Support",
+      description:
+        "Our relation does not end just after the delivery of the product but we have a trusted network of customers where we are known not just for our products but also our after sales service and support. We have a super team dedicated for maintenance and support service for all our clients.",
+    },
+  ];
+  const values = [
+    {
+      title: "Integrity",
+      description:
+        "Strong ethics is a priority for the company's wholesome behaviour.",
+      logo: "/images/logo.png",
+    },
+    {
+      title: "Employee Satisfaction",
+      description:
+        "Customers will never love a company untill the employees love it first.",
+      logo: "/images/logo.png",
+    },
+    {
+      title: "Teamwork",
+      description:
+        "When working together we have the capability of creating something greater for the humankind.",
+      logo: "/images/logo.png",
+    },
+    {
+      title: "Quality",
+      description:
+        "We try to harness and maintain the highest standards with consistency for our products and services.",
+      logo: "/images/logo.png",
+    },
+    {
+      title: "Customer Satisfaction",
+      description:
+        "We feel responsible towards the customers, we try to build trust and work towards it by providing support even after our job is over. Afterall, customers are family. ",
+      logo: "/images/logo.png",
+    },
+  ];
+  const experties = [
+    {
+      title: "Backend",
+      items: [
+        {
+          name: "Node",
+        },
+        {
+          name: "java",
+        },
+        {
+          name: "Python",
+        },
+      ],
+    },
+    {
+      title: "Database",
+      items: [
+        {
+          name: "MongoDb",
+        },
+        {
+          name: "MySQL",
+        },
+        {
+          name: "Postgre SQL",
+        },
+        {
+          name: "Oracle",
+        },
+        {
+          name: "SQLite",
+        },
+      ],
+    },
+    {
+      title: "Testing",
+      items: [
+        {
+          name: "cypress",
+        },
+        {
+          name: "Selenium",
+        },
+        {
+          name: "Postman",
+        },
+
+        {
+          name: "insomnia",
+        },
+      ],
+    },
+    {
+      title: "Cloud and DevOps",
+      items: [
+        {
+          name: "Digital Ocean",
+        },
+        {
+          name: "Amazon Web Services",
+        },
+        {
+          name: "Google Cloud",
+        },
+        {
+          name: "Cloud Flare",
+        },
+        {
+          name: "Docker",
+        },
+        {
+          name: "Kuberneties",
+        },
+      ],
+    },
+    {
+      title: "Frontend",
+      items: [
+        {
+          name: "React",
+        },
+        {
+          name: "Vue",
+        },
+        {
+          name: "Next",
+        },
+      ],
+    },
+    {
+      title: "Mobility",
+      items: [
+        { name: "Flutter" },
+        { name: "React Native" },
+        {
+          name: "iOS",
+        },
+        {
+          name: "Android",
+        },
+      ],
+    },
+  ];
   return (
     <>
       <Layout title={"Home Page"}>
@@ -19,43 +182,21 @@ export default function Home(): JSX.Element {
           >
             <div className=" container m-auto">
               <div className=" grid grid-cols-1 gap-4 md:grid-cols-2 sm:grid-cols-2  lg:grid-cols-3 ">
-                {[
-                  {
-                    title: "Custom Software Development",
-                    description: `We combine decades of experience, top software engineering, and creativity to bring you the best software development`,
-                    path: "",
-                  },
-                  {
-                    title: "Enterprise System Development",
-                    description: `We provide the next generation solutions to improve an organization's and business using our experties of differnet sectors`,
-                  },
-                  {
-                    title: "Web and Moblie App Development",
-                    description: `We design and develop native and cross platform applaction using different framework and run in different browser. Our design are responsive and user friendly`,
-                  },
-                  {
-                    title: "Maintenance & Support",
-                    description: `Our job is not done after building your software for you. We continue working with all our customers to provide high-quality and dedicated support`,
-                  },
-                  {
-                    title: "Application Testing",
-                    description: `We test every elemnet of the application: performance, functioning, integrations, security, and usability.`,
-                  },
-                ].map((item: any, id: any) => (
+                {services.map((item: any, id: any) => (
                   <div
-                    className="mt-10 relative flex justify-center items-center shadow-md bg-stone-100 rounded-md c-hover "
+                    className="mt-10 relative flex justify-center items-center text-black shadow-md bg-stone-100 rounded-md c-hover "
                     style={{ minHeight: "20rem" }}
                     key={id}
                   >
                     <div className="flex flex-col p-4 text-center">
                       <div className="p-4 font-bold text-lg">
-                        <h1>{item.title}</h1>
+                        <h1 className="hover-text">{item.title}</h1>
                       </div>
                       <div className="p-4">{item.description}</div>
                     </div>
-                    <div className="absolute right-0 bottom-0  c-service-view  p-2 rounded-br-md">
+                    {/* <div className="absolute right-0 bottom-0  c-service-view  p-2 rounded-br-md">
                       View More
-                    </div>
+                    </div> */}
                   </div>
                 ))}
               </div>
@@ -87,112 +228,9 @@ export default function Home(): JSX.Element {
               Experties
             </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4  lg:grid-cols-6 mt-10">
-              {[
-                {
-                  title: "Backend",
-                  items: [
-                    {
-                      name: "Node",
-                    },
-                    {
-                      name: "java",
-                    },
-                    {
-                      name: "Python",
-                    },
-                  ],
-                },
-                {
-                  title: "Database",
-                  items: [
-                    {
-                      name: "MongoDb",
-                    },
-                    {
-                      name: "MySQL",
-                    },
-                    {
-                      name: "Postgre SQL",
-                    },
-                    {
-                      name: "Oracle",
-                    },
-                    {
-                      name: "SQLite",
-                    },
-                  ],
-                },
-                {
-                  title: "Testing",
-                  items: [
-                    {
-                      name: "cypress",
-                    },
-                    {
-                      name: "Selenium",
-                    },
-                    {
-                      name: "Postman",
-                    },
-
-                    {
-                      name: "insomnia",
-                    },
-                  ],
-                },
-                {
-                  title: "Cloud and DevOps",
-                  items: [
-                    {
-                      name: "Digital Ocean",
-                    },
-                    {
-                      name: "Amazon Web Services",
-                    },
-                    {
-                      name: "Google Cloud",
-                    },
-                    {
-                      name: "Cloud Flare",
-                    },
-                    {
-                      name: "Docker",
-                    },
-                    {
-                      name: "Kuberneties",
-                    },
-                  ],
-                },
-                {
-                  title: "Frontend",
-                  items: [
-                    {
-                      name: "React",
-                    },
-                    {
-                      name: "Vue",
-                    },
-                    {
-                      name: "Next",
-                    },
-                  ],
-                },
-                {
-                  title: "Mobility",
-                  items: [
-                    { name: "Flutter" },
-                    { name: "React Native" },
-                    {
-                      name: "iOS",
-                    },
-                    {
-                      name: "Android",
-                    },
-                  ],
-                },
-              ].map((item: any, id: any) => (
+              {experties.map((item: any, id: any) => (
                 <div className="flex flex-col" key={id}>
-                  <div className="font-bold" key={id}>
+                  <div className="font-bold c-text" key={id}>
                     {item.title}
                   </div>
                   {item.items.map((vars: any, abc: any) => (
@@ -202,7 +240,7 @@ export default function Home(): JSX.Element {
               ))}
             </div>
           </div>
-          <div className="container m-auto">
+          <div className="container m-auto mb-4">
             <div className="flex flex-col ">
               <div className="flex justify-center">
                 <div
@@ -210,32 +248,11 @@ export default function Home(): JSX.Element {
                   style={{ color: "#0279b1" }}
                 >
                   {" "}
-                  Our Models
+                  Our Core Value
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 sm:grid-cols-2  lg:grid-cols-3">
-                {[
-                  {
-                    title: "Employee Satifaction",
-                    description: "some thing descride",
-                    logo: "/images/logo.jpg",
-                  },
-                  {
-                    title: "Aglie Framework",
-                    description: "some thing descride",
-                    logo: "/images/logo.png",
-                  },
-                  {
-                    title: "Customer Satifaction",
-                    description: "some thing descride",
-                    logo: "/images/logo.png",
-                  },
-                  {
-                    title: "Dedicated team",
-                    description: "some thing descride",
-                    logo: "/images/logo.png",
-                  },
-                ].map((item: any, id: any) => (
+                {values.map((item: any, id: any) => (
                   <div
                     key={id}
                     className="flex flex-col justify-center max-sm:items-start max-sm:justify-start items-center hover:shadow-md hover:scale-105 rounded-md hover:border-t-4 p-2 duration-700"
@@ -243,7 +260,7 @@ export default function Home(): JSX.Element {
                     <div className="h-20 w-20">
                       <img src={item.logo}></img>
                     </div>
-                    <div className="font-bold text-lg hover:primary">
+                    <div className="font-bold text-lg hover:primary c-text">
                       {item.title}
                     </div>
                     <div className="">{item.description}</div>

@@ -129,7 +129,7 @@ export default function Layout({ title, children }: any) {
 
         <main className="">{children}</main>
         <footer>
-          <div className=" bg-gray-200 shadow-inner h-auto ">
+          <div className=" bg-gray-200 text-black shadow-inner h-auto ">
             <div className="container m-auto flex justify-between">
               <Footer nav={nav}></Footer>
             </div>
