@@ -322,10 +322,6 @@ export default function Home(): JSX.Element {
               loop={true}
               navigation={true}
               modules={[Navigation]}
-              style={{
-                "--swiper-navigation-color": "#0279b1",
-                "--swiper-pagination-color": "red",
-              }}
               className="mySwiper"
             >
               {testimonial.map((item: any, id: any) => (
