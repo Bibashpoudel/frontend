@@ -1,5 +1,13 @@
 import Layout from "../components/Layout";
 import React from "react";
+import Image from "next/image";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Pagination, Navigation } from "swiper";
+import Card from "../components/Card";
 
 export default function Home(): JSX.Element {
   const services = [
@@ -34,25 +42,25 @@ export default function Home(): JSX.Element {
       title: "Integrity",
       description:
         "Strong ethics is a priority for the company's wholesome behaviour.",
-      logo: "/images/logo.png",
+      logo: "/images/integrity.png",
     },
     {
       title: "Employee Satisfaction",
       description:
         "Customers will never love a company untill the employees love it first.",
-      logo: "/images/logo.png",
+      logo: "/images/employee.png",
     },
     {
       title: "Teamwork",
       description:
         "When working together we have the capability of creating something greater for the humankind.",
-      logo: "/images/logo.png",
+      logo: "/images/teamwork.png",
     },
     {
       title: "Quality",
       description:
         "We try to harness and maintain the highest standards with consistency for our products and services.",
-      logo: "/images/logo.png",
+      logo: "/images/quality.png",
     },
     {
       title: "Customer Satisfaction",
@@ -165,6 +173,35 @@ export default function Home(): JSX.Element {
       ],
     },
   ];
+  const testimonial = [
+    {
+      message: "abc",
+      position: "CEO",
+      additionalPosition: "",
+      name: "Sunim Mainali",
+
+      companyName: "",
+      logo: "/images/logo.png",
+    },
+    {
+      message: "abc",
+      position: "CEO",
+      additionalPosition: "",
+      name: "Sunim Mainali",
+
+      companyName: "",
+      logo: "/images/logo.png",
+    },
+    {
+      message: "abc",
+      position: "CEO",
+      additionalPosition: "",
+      name: "Sunim Mainali",
+
+      companyName: "some",
+      logo: "/images/logo.png",
+    },
+  ];
   return (
     <>
       <Layout title={"Home Page"}>
@@ -205,11 +242,13 @@ export default function Home(): JSX.Element {
           <div className="container m-auto custom-moto">
             <div className="flex float-right">
               <div>
-                <img
+                <Image
+                  height={100}
+                  width={3000}
                   className="h-28 max-w-96 w-full rounded-l-md"
                   src="/images/teamwork.jpg"
                   alt=""
-                ></img>
+                />
               </div>
               <div className="flex p-6 items-center justify-center c-moto-text rounded-r-md font-bold w-full max-w-96 max-md:text-lg max-sm:text-sm  text-xl text-white">
                 <p>
@@ -258,7 +297,12 @@ export default function Home(): JSX.Element {
                     className="flex flex-col justify-center max-sm:items-start max-sm:justify-start items-center hover:shadow-md hover:scale-105 rounded-md hover:border-t-4 p-2 duration-700"
                   >
                     <div className="h-20 w-20">
-                      <img src={item.logo}></img>
+                      <Image
+                        height={100}
+                        width={100}
+                        src={item.logo}
+                        alt="logo"
+                      ></Image>
                     </div>
                     <div className="font-bold text-lg hover:primary c-text">
                       {item.title}
@@ -268,6 +312,29 @@ export default function Home(): JSX.Element {
                 ))}
               </div>
             </div>
+          </div>
+          <div className="container m-auto mb-4">
+            <div className="flex justify-center font-bold text-xl c-text mb-4">
+              {" "}
+              What Client Say About Us
+            </div>
+            <Swiper
+              loop={true}
+              navigation={true}
+              modules={[Navigation]}
+              style={{
+                "--swiper-navigation-color": "#0279b1",
+                "--swiper-pagination-color": "red",
+              }}
+              className="mySwiper"
+            >
+              {testimonial.map((item: any, id: any) => (
+                <SwiperSlide key={id}>
+                  {" "}
+                  <Card items={item} key={id} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       </Layout>

@@ -389,12 +389,12 @@ img {
 .contactForm .inputBox {
   position: relative;
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 .contactForm .inputBox input,
 .contactForm .inputBox textarea {
   width: 100% !important;
-  padding: 0.5rem 0 !important;
+  padding: 0.3rem 0 !important;
   font-size: 1rem !important;
   margin: 1rem 0 !important;
   border: none !important;
@@ -407,7 +407,7 @@ img {
 .contactForm .inputBox span {
   position: absolute;
   left: 0;
-  padding: 0.5rem 0;
+  padding: 0.2rem 0;
   font-size: 1.6rem;
   margin: 1rem 0;
   pointer-events: none;

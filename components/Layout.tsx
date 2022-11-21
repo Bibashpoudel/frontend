@@ -1,6 +1,7 @@
 import { BellIcon } from "@heroicons/react/24/outline";
 import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -59,6 +60,7 @@ export default function Layout({ title, children }: any) {
           name="description"
           content="Best IT company and better solution for yur business "
         />
+
         <meta name="color-scheme" content="light only"></meta>
         <link rel="icon" href="images/logo.png" type="image/x-icon"></link>
       </Head>
@@ -80,14 +82,17 @@ export default function Layout({ title, children }: any) {
                 />
               </svg>
               <Link href="/">
-                <img
-                  src="images/logo.png"
+                <Image
+                  width={100}
+                  height={100}
+                  src="/images/logo.png"
                   style={{ width: "4rem ", height: "2rem" }}
-                ></img>
+                  alt={"bibash"}
+                />
               </Link>
             </div>
             <div className="flex">
-              <Link href="/">
+              <Link target="_blank" href="https://calendly.com/pacecode/30min">
                 <span className="p-3 button-primary">Lets talk</span>
               </Link>
               <Link href="/contact-us">
