@@ -175,7 +175,8 @@ export default function Home(): JSX.Element {
   ];
   const testimonial = [
     {
-      message: "abc",
+      message:
+        "Pace Code has helped in providing a proper solutions for our CRM, Now our customer database are secure than ever and analysis are an ease. Thank you for your upfront support. Cheers to the team for their dedicated work.",
       position: "CEO",
       additionalPosition: "",
       name: "Sunim Mainali",
@@ -184,12 +185,12 @@ export default function Home(): JSX.Element {
       logo: "/images/logo.png",
     },
     {
-      message: "abc",
-      position: "CEO",
-      additionalPosition: "",
-      name: "Sunim Mainali",
+      message: "Sevenoath",
+      position: "Co-founder",
+      additionalPosition: "CA",
+      name: "Rohit Lamichanne",
 
-      companyName: "",
+      companyName: "Sevenoath",
       logo: "/images/logo.png",
     },
     {

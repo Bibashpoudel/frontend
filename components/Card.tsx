@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import FormatQuoteOutlinedIcon from "@mui/icons-material/FormatQuoteOutlined";
 
 export default function Card({ items }: any) {
   return (
@@ -14,9 +15,13 @@ export default function Card({ items }: any) {
         <div>{items.companyName}</div>
       </div> */}
       <div className="flex flex-col items-center ml-10">
-        <div>{items.message}</div>
+        <div>
+          <FormatQuoteOutlinedIcon></FormatQuoteOutlinedIcon>
+          {items.message}
+          <FormatQuoteOutlinedIcon></FormatQuoteOutlinedIcon>
+        </div>
         <div className="flex items-center">
-          <div>
+          <div className="mr-3">
             <Image
               width={100}
               height={100}
@@ -26,10 +31,12 @@ export default function Card({ items }: any) {
           </div>
           <div className="flex flex-col items-center">
             {" "}
-            <div>{items.name} </div>
-            <div>
-              {items.position}{" "}
-              {items.additionalPosition && items.additionalPosition} |{" "}
+            <div className="text-lg ">{items.name} </div>
+            <div className="text-sm text-gray-400">
+              {items.position}
+              {items.additionalPosition && ", "}
+              {items.additionalPosition && items.additionalPosition}{" "}
+              {items.companyName && "| "}
               {items.companyName}
             </div>
           </div>

@@ -3,6 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function SideBar({ open, setOpen, setopenModal, item }: any) {
   const router = useRouter();
@@ -41,10 +42,13 @@ export default function SideBar({ open, setOpen, setopenModal, item }: any) {
                     }}
                     style={{ backgroundColor: "#0279b1" }}
                   >
-                    <img
+                    <Image
                       src="/images/logo_w.png"
+                      width={100}
+                      height={100}
+                      alt="Logo"
                       style={{ width: "6rem", height: "3rem", color: "white" }}
-                    ></img>
+                    ></Image>
                   </div>
                   <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                     <div className="px-4 sm:px-6">

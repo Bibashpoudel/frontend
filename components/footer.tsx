@@ -55,9 +55,9 @@ export default function Footer({ nav }: any) {
         </div>
         <div>
           <p>
-            The experties and soultion provide by us help you to rise the
-            business and reduce the operation. Customer are proud of us for
-            providing high quality software and solution{" "}
+            We keep a high velocity in our work to match with the pace of your
+            business and help them grow along, Because we value growing
+            together.
           </p>
         </div>
       </div>
