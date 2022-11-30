@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Script from "next/script";
 import React, { useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import slideImage from "../utils/imageslider";
@@ -34,22 +35,22 @@ export default function Layout({ title, children }: any) {
       path: "/",
       title: "Home",
     },
-    {
-      path: "/our-services",
-      title: "Our Service",
-    },
-    {
-      path: "/about-us",
-      title: "About Us",
-    },
-    {
-      path: "/career",
-      title: "Career",
-    },
-    {
-      path: "/blog",
-      title: "Blog",
-    },
+    // {
+    //   path: "/our-services",
+    //   title: "Our Service",
+    // },
+    // {
+    //   path: "/about-us",
+    //   title: "About Us",
+    // },
+    // {
+    //   path: "/career",
+    //   title: "Career",
+    // },
+    // {
+    //   path: "/blog",
+    //   title: "Blog",
+    // },
   ];
 
   return (

@@ -20,7 +20,8 @@
     "**/*.ts",
     "**/*.tsx",
     "components/check.js",
-    "utils/store.js"
+    "utils/store.js",
+    "utils/gtab.js"
   ],
   "exclude": ["node_modules"]
 }

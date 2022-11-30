@@ -17,7 +17,7 @@ export default function Home(): JSX.Element {
         "We help enterprises develop their custom software as per the needs not compromising on quality with the help of Our highly experienced team, top engineering practice and creativity.",
     },
     {
-      title: "Web and Moblie App Development",
+      title: "Web  Application Development",
       description:
         "Now integrate your web application to the comfort of your hand as we are experts to incorporate and develop both web and mobile applications using cross platform and native framework.",
     },
@@ -27,16 +27,32 @@ export default function Home(): JSX.Element {
         "Our highly experienced team, top engineering practice and creativity will ensure a highly integrated Enterprise system that will support your business process, information flows, reporting and data analysis.",
     },
     {
-      title: "Application Testing",
+      title: "Mobile Application Development",
       description:
-        "We scrutinize each and every functionality of an application, its integration, security, and usability.Our team makes sure ease in usability of the application.",
+        "we create a fully connected infrastructure to meet your mobile application needs. We develop iOS (iPad/iPhone) and Android apps for mobile devices,  as well as apps that can run on both platforms when cross-platform is desired.",
     },
+    // {
+    //   title: "Application Testing",
+    //   description:
+    //     "We scrutinize each and every functionality of an application, its integration, security, and usability.Our team makes sure ease in usability of the application.",
+    // },
     {
-      title: "Maintenance & Support",
+      title: "IT Consulting",
       description:
-        "Our relation does not end just after the delivery of the product but we have a trusted network of customers where we are known not just for our products but also our after sales service and support. We have a super team dedicated for maintenance and support service for all our clients.",
+        "To provide businesses all around the world with the greatest IT services, we have the best IT talent and specialists working continuously.",
+    },
+    // {
+    //   title: "Maintenance & Support",
+    //   description:
+    //     "Our relation does not end just after the delivery of the product but we have a trusted network of customers where we are known not just for our products but also our after sales service and support. We have a super team dedicated for maintenance and support service for all our clients.",
+    // },
+    {
+      title: "Cloud Computing",
+      description:
+        "We use our extensive knowledge of cloud computing to assist clients all around the world in planning, implementing, and managing their cloud journeys. we provide a committed team of Cloud & DevOps experties to our clients.",
     },
   ];
+
   const values = [
     {
       title: "Integrity",
@@ -66,7 +82,13 @@ export default function Home(): JSX.Element {
       title: "Customer Satisfaction",
       description:
         "We feel responsible towards the customers, we try to build trust and work towards it by providing support even after our job is over. Afterall, customers are family. ",
-      logo: "/images/logo.png",
+      logo: "/images/customer.png",
+    },
+    {
+      title: "offshore",
+      description:
+        "According to the needs of the client, we offer a team of offshore engineers and project management officers. ",
+      logo: "/images/offshore.png",
     },
   ];
   const experties = [
@@ -77,7 +99,7 @@ export default function Home(): JSX.Element {
           name: "Node",
         },
         {
-          name: "java",
+          name: "Java",
         },
         {
           name: "Python",
@@ -108,7 +130,7 @@ export default function Home(): JSX.Element {
       title: "Testing",
       items: [
         {
-          name: "cypress",
+          name: "Cypress",
         },
         {
           name: "Selenium",
@@ -118,7 +140,7 @@ export default function Home(): JSX.Element {
         },
 
         {
-          name: "insomnia",
+          name: "Insomnia",
         },
       ],
     },
@@ -142,6 +164,12 @@ export default function Home(): JSX.Element {
         },
         {
           name: "Kuberneties",
+        },
+        {
+          name: "Jenkins",
+        },
+        {
+          name: "Terraform",
         },
       ],
     },
@@ -180,26 +208,18 @@ export default function Home(): JSX.Element {
       position: "CEO",
       additionalPosition: "",
       name: "Sunim Mainali",
-
+      img: "/images/sunim.jpg",
       companyName: "",
       logo: "/images/logo.png",
     },
     {
-      message: "Sevenoath",
+      message:
+        "Pace Code has helped us designing and devloping our idea to business logic. The team had wide range of the standarlization and clear vision of customer thinking and preference. we are glab to be the part of their service.",
       position: "Co-founder",
       additionalPosition: "CA",
       name: "Rohit Lamichanne",
-
+      img: "/images/rohit.jpg",
       companyName: "Sevenoath",
-      logo: "/images/logo.png",
-    },
-    {
-      message: "abc",
-      position: "CEO",
-      additionalPosition: "",
-      name: "Sunim Mainali",
-
-      companyName: "some",
       logo: "/images/logo.png",
     },
   ];
@@ -222,12 +242,12 @@ export default function Home(): JSX.Element {
               <div className=" grid grid-cols-1 gap-4 md:grid-cols-2 sm:grid-cols-2  lg:grid-cols-3 ">
                 {services.map((item: any, id: any) => (
                   <div
-                    className="mt-10 relative flex justify-center items-center text-black shadow-md bg-stone-100 rounded-md c-hover "
+                    className="mt-10 relative flex justify-center  text-black shadow-md bg-stone-100 rounded-md c-hover "
                     style={{ minHeight: "20rem" }}
                     key={id}
                   >
                     <div className="flex flex-col p-4 text-center">
-                      <div className="p-4 font-bold text-lg">
+                      <div className="p-4 font-bold text-lg ">
                         <h1 className="hover-text">{item.title}</h1>
                       </div>
                       <div className="p-4">{item.description}</div>
@@ -280,7 +300,7 @@ export default function Home(): JSX.Element {
               ))}
             </div>
           </div>
-          <div className="container m-auto mb-4">
+          <div className="container m-auto mb-8">
             <div className="flex flex-col ">
               <div className="flex justify-center">
                 <div
@@ -288,14 +308,14 @@ export default function Home(): JSX.Element {
                   style={{ color: "#0279b1" }}
                 >
                   {" "}
-                  Our Core Value
+                  Why work with Us?
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2 sm:grid-cols-2  lg:grid-cols-3">
                 {values.map((item: any, id: any) => (
                   <div
                     key={id}
-                    className="flex flex-col justify-center max-sm:items-start max-sm:justify-start items-center hover:shadow-md hover:scale-105 rounded-md hover:border-t-4 p-2 duration-700"
+                    className="flex flex-col  items-center hover:shadow-md hover:scale-105 rounded-md hover:border-t-4 p-2 duration-700"
                   >
                     <div className="h-20 w-20">
                       <Image
@@ -305,6 +325,32 @@ export default function Home(): JSX.Element {
                         alt="logo"
                       ></Image>
                     </div>
+                    <div className="font-bold text-lg hover:primary c-text mb-4">
+                      {item.title}
+                    </div>
+                    <div className="text-center">{item.description}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          {/* <div className="container m-auto mb-4">
+            <div className="flex flex-col ">
+              <div className="flex justify-center">
+                <div
+                  className="font-bold text-2xl mt-10 mb-4"
+                  style={{ color: "#0279b1" }}
+                >
+                  {" "}
+                  Why work with Us?
+                </div>
+              </div>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 sm:grid-cols-2  lg:grid-cols-3">
+                {values.map((item: any, id: any) => (
+                  <div
+                    key={id}
+                    className="flex flex-col justify-center max-sm:items-start max-sm:justify-start items-center hover:shadow-md hover:scale-105 rounded-md hover:border-t-4 p-2 duration-700"
+                  >
                     <div className="font-bold text-lg hover:primary c-text">
                       {item.title}
                     </div>
@@ -313,25 +359,27 @@ export default function Home(): JSX.Element {
                 ))}
               </div>
             </div>
-          </div>
-          <div className="container m-auto mb-4">
-            <div className="flex justify-center font-bold text-xl c-text mb-4">
-              {" "}
-              What Client Say About Us
+          </div> */}
+          <div className="w-full bg-transparent">
+            <div className="container m-auto mb-4 ">
+              <div className="flex justify-center font-bold text-xl c-text mb-4">
+                {" "}
+                What Client Say About Us
+              </div>
+              <Swiper
+                loop={true}
+                navigation={true}
+                modules={[Navigation]}
+                className="mySwiper"
+              >
+                {testimonial.map((item: any, id: any) => (
+                  <SwiperSlide key={id}>
+                    {" "}
+                    <Card items={item} key={id} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
-            <Swiper
-              loop={true}
-              navigation={true}
-              modules={[Navigation]}
-              className="mySwiper"
-            >
-              {testimonial.map((item: any, id: any) => (
-                <SwiperSlide key={id}>
-                  {" "}
-                  <Card items={item} key={id} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
           </div>
         </div>
       </Layout>

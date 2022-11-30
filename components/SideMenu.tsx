@@ -57,6 +57,7 @@ export default function SideBar({ open, setOpen, setopenModal, item }: any) {
                           {" "}
                           <Link
                             href={item.path}
+                            onClick={() => setOpen(false)}
                             className={
                               router.pathname == `${item.path}`
                                 ? "c-active"

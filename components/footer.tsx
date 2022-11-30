@@ -1,4 +1,10 @@
-import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
+import {
+  Facebook,
+  Instagram,
+  LinkedIn,
+  Twitter,
+  YouTube,
+} from "@mui/icons-material";
 import React from "react";
 import { useForm } from "react-hook-form";
 import SmartphoneIcon from "@mui/icons-material/Smartphone";
@@ -23,7 +29,7 @@ export default function Footer({ nav }: any) {
   const submitHandler = async ({ email }: any) => {
     try {
       const { data } = await axios.post(
-        "http://146.190.93.23/api/v1/contact/news-letter",
+        "https://www.pacecode.com.np/api/v1/contact/news-letter",
         {
           email,
         },
@@ -146,14 +152,27 @@ export default function Footer({ nav }: any) {
           </span>
           <span className="pr-2 c-icon">
             {" "}
-            <Facebook
-              aria-hidden="true"
-              style={{ color: "#4267B2" }}
-            ></Facebook>
+            <Link
+              href="https://www.facebook.com/Pace-Code-107596282187044"
+              target="_blank"
+            >
+              <Facebook
+                aria-hidden="true"
+                style={{ color: "#4267B2" }}
+              ></Facebook>
+            </Link>
           </span>
           <span className="pr-2 c-icon">
             {" "}
-            <YouTube aria-hidden="true" style={{ color: "#FF0000" }}></YouTube>
+            <Link
+              href="https://www.linkedin.com/company/pacecode/"
+              target="_blank"
+            >
+              <LinkedIn
+                aria-hidden="true"
+                style={{ color: "#0072b1" }}
+              ></LinkedIn>
+            </Link>
           </span>
           <span className="c-icon">
             {" "}
