@@ -20,11 +20,9 @@ export default function Contactus() {
   const router = useRouter();
 
   const submitHandler = async ({ fullname, email, phone, message }: any) => {
-    console.log(fullname, email, phone, message);
-
     try {
       const { data } = await axios.post(
-        "http://146.190.93.23/api/v1/contact/send-message",
+        "https://www.pacecode.com.np/api/v1/contact/send-message",
         {
           fullName: fullname,
           email: email,
