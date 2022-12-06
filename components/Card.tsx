@@ -17,9 +17,13 @@ export default function Card({ items }: any) {
       </div> */}
       <div className="flex flex-col items-center sm:ml-10">
         <div>
-          <FormatQuoteOutlinedIcon></FormatQuoteOutlinedIcon>
+          <FormatQuoteOutlinedIcon
+            style={{ color: "#0279b1", height: "1rem" }}
+          ></FormatQuoteOutlinedIcon>
           {items.message}
-          <FormatQuoteOutlinedIcon></FormatQuoteOutlinedIcon>
+          <FormatQuoteOutlinedIcon
+            style={{ color: "#0279b1", height: "1rem" }}
+          ></FormatQuoteOutlinedIcon>
         </div>
         <div className="flex items-center">
           <div className="mr-3">

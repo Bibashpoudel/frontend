@@ -58,37 +58,37 @@ export default function Home(): JSX.Element {
       title: "Integrity",
       description:
         "Strong ethics is a priority for the company's wholesome behaviour.",
-      logo: "/images/integrity.png",
+      logo: "/images/integrity1.png",
     },
     {
       title: "Employee Satisfaction",
       description:
         "Customers will never love a company untill the employees love it first.",
-      logo: "/images/employee.png",
+      logo: "/images/employee1.png",
     },
     {
       title: "Teamwork",
       description:
         "When working together we have the capability of creating something greater for the humankind.",
-      logo: "/images/teamwork.png",
+      logo: "/images/teamwork1.png",
     },
     {
       title: "Quality",
       description:
         "We try to harness and maintain the highest standards with consistency for our products and services.",
-      logo: "/images/quality.png",
+      logo: "/images/quality1.png",
     },
     {
       title: "Customer Satisfaction",
       description:
         "We feel responsible towards the customers, we try to build trust and work towards it by providing support even after our job is over. Afterall, customers are family. ",
-      logo: "/images/customer.png",
+      logo: "/images/customer1.png",
     },
     {
       title: "offshore",
       description:
         "According to the needs of the client, we offer a team of offshore engineers and project management officers. ",
-      logo: "/images/offshore.png",
+      logo: "/images/offshore1.png",
     },
   ];
   const experties = [
@@ -209,12 +209,12 @@ export default function Home(): JSX.Element {
       additionalPosition: "",
       name: "Sunim Mainali",
       img: "/images/sunim.jpg",
-      companyName: "",
+      companyName: "Techfortress",
       logo: "/images/logo.png",
     },
     {
       message:
-        "Pace Code has helped us designing and devloping our idea to business logic. The team had wide range of the standarlization and clear vision of customer thinking and preference. we are glab to be the part of their service.",
+        "Pace Code has helped us designing and devloping our idea to business logic. The team had wide range of the standarlization and clear vision of customer thinking and preference. we are glad to be the part of their service.",
       position: "Co-founder",
       additionalPosition: "CA",
       name: "Rohit Lamichanne",
@@ -225,7 +225,14 @@ export default function Home(): JSX.Element {
   ];
   return (
     <>
-      <Layout title={"Home Page"}>
+      <Layout
+        title={
+          "Pace Code | Exceeding your Expectations in Software Development  "
+        }
+        description={
+          "Pace Code facilitates business owners in developing software products. We specialized in the creation of custom software development, enterprise system development, web and mobile applications, cyber security,  and cloud engineering."
+        }
+      >
         <div className="">
           <div className="p-4 flex justify-center ">
             <div className="font-bold text-3xl" style={{ color: "#0279b1" }}>
@@ -364,7 +371,7 @@ export default function Home(): JSX.Element {
             <div className="container m-auto mb-4 ">
               <div className="flex justify-center font-bold text-xl c-text mb-4">
                 {" "}
-                What Client Say About Us
+                What Client Say About Us?
               </div>
               <Swiper
                 loop={true}

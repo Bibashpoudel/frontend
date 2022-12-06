@@ -29,7 +29,7 @@ export default function Footer({ nav }: any) {
   const submitHandler = async ({ email }: any) => {
     try {
       const { data } = await axios.post(
-        "https://www.pacecode.com.np/api/v1/contact/news-letter",
+        "http://localhost:5001/api/v1/contact/news-letter",
         {
           email,
         },
@@ -148,7 +148,12 @@ export default function Footer({ nav }: any) {
         <div className="flex">
           <span className="pr-2 c-icon">
             {" "}
-            <Instagram aria-hidden="true" className="text-red-500 "></Instagram>
+            <Link href="https://www.instagram.com/pace.code/" target="_blank">
+              <Instagram
+                aria-hidden="true"
+                className="text-red-500 "
+              ></Instagram>
+            </Link>
           </span>
           <span className="pr-2 c-icon">
             {" "}
@@ -176,12 +181,18 @@ export default function Footer({ nav }: any) {
           </span>
           <span className="c-icon">
             {" "}
-            <Twitter aria-hidden="true" style={{ color: "#1DA1F2" }}></Twitter>
+            <Link href="https://twitter.com/Pace__Code" target="_blank">
+              {" "}
+              <Twitter
+                aria-hidden="true"
+                style={{ color: "#1DA1F2" }}
+              ></Twitter>
+            </Link>
           </span>
         </div>
-        <div className="mt-2 text-gray-500 p-1">
+        {/* <div className="mt-2 text-gray-500 p-1">
           <SmartphoneIcon className="h-5"></SmartphoneIcon> +977 9748307013
-        </div>
+        </div> */}
         <div className="text-gray-500 p-1">
           <LocationOnIcon className="h-5"></LocationOnIcon> Kathmandu, Nepal
         </div>

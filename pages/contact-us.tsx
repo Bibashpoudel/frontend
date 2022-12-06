@@ -22,7 +22,7 @@ export default function Contactus() {
   const submitHandler = async ({ fullname, email, phone, message }: any) => {
     try {
       const { data } = await axios.post(
-        "https://www.pacecode.com.np/api/v1/contact/send-message",
+        "http://localhost:5001/api/v1/contact/send-message",
         {
           fullName: fullname,
           email: email,
@@ -50,7 +50,12 @@ export default function Contactus() {
     } catch (error) {}
   };
   return (
-    <Layout title={"Contact Us"}>
+    <Layout
+      title={"Contact Us | Tell us a little about yourself, and your project"}
+      description={
+        "We would like connecting with you. Tell us a little about yourself, your project, and the best way to contact you. We'll get back to you right away."
+      }
+    >
       <div className="contact bg-gray-300">
         <div className="container flex justify-between max-md:flex-col m-auto containers">
           <div className="contactInfo md:w-1/2 text-white">
