@@ -4,6 +4,12 @@
 :root {
   color-scheme: only light;
 }
+@layer base {
+  ul,
+  ol {
+    list-style: revert;
+  }
+}
 html,
 body {
   padding: 0;
@@ -455,4 +461,8 @@ img {
   .contactForm h2 {
     font-size: 1.6rem;
   }
+}
+.bg-primary {
+  background-color: #0279b1;
+  color: white;
 }

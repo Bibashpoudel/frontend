@@ -59,12 +59,12 @@ export default function Layout({ title, children, description }: any) {
         <title>{title ? title + " - Pace Code" : "Pace Code"}</title>
 
         <meta
-          content="Gurzu"
+          content="PaceCode"
           name="author"
           style={{ userSelect: "text" }}
         ></meta>
         <meta
-          content="enterprise solution, product development, develop software, apps developer, agile for software development, create software, software coding, companies software development, application software developers, custom-developed software, app developer software, custom software development companies, process development software, software developing companies, app build software, methodology software development, software outsourcing, custom software, engineering software development, app create software, building software, website software, agile methodologies for software development, software company, Node, nodejs, Nextjs, nextjs, nestjs, nest, react, reactjs, reactnative, flutter, iOS development, android development,   python, django framework, django, restAPI, RESTAPI, restapi, nodejs, vue js, typescript,  digital signage, display network, building your own website, digital experience, customer software management, javascript, outsourcing business, team augmentation, pace code, pace, code, pacecode"
+          content="enterprise solution, product development, develop software, apps developer, agile for software development, create software, software coding, companies software development, application software developers, custom-developed software, app developer software, custom software development companies, process development software, software developing companies, app build software, methodology software development, software outsourcing, offshore, pwa, custom software, cybersecurity, cyber security, cyber, security, engineering software development, app create software, building software, website software, agile methodologies for software development, software company, Node, nodejs, Nextjs, nextjs, nestjs, nest, react, reactjs, reactnative, flutter, iOS development, android development,   python, django framework, django, restAPI, RESTAPI, restapi, nodejs, vue js, typescript,  digital signage, display network, building your own website, digital experience, customer software management, javascript, outsourcing business, team augmentation, pace code, pace, code, pacecode, gamedevelopment, game development, game, wordpress, wordpress development, wordpress design, phaser, threejs, three js, 2d game development, 2d, 2d game, 3d game development, 3d, 3d game"
           name="keywords"
           style={{ userSelect: "text" }}
         ></meta>
@@ -74,12 +74,12 @@ export default function Layout({ title, children, description }: any) {
           style={{ userSelect: "text" }}
         ></meta>
         <meta
-          http-equiv="x-ua-compatible"
+          httpEquiv="x-ua-compatible"
           content="ie=edge"
           style={{ userSelect: "text" }}
         ></meta>
         <meta
-          http-equiv="Cache-control"
+          httpEquiv="Cache-control"
           content="private"
           style={{ userSelect: "text" }}
         ></meta>
