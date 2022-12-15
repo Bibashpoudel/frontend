@@ -1,136 +1,87 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import AdminLayout from "../../components/AdminLayout";
+import Experties from "../../components/components/Experties";
+import Privacy from "../../components/components/Privacy";
+import Service from "../../components/components/Service";
+import Terms from "../../components/components/Terms";
+import Testo from "../../components/components/Testo";
+import Whywe from "../../components/components/Whywe";
 
 export default function Settings() {
-  const [privacy, setPrivacy] = useState(true);
+  const [privacy, setPrivacy] = useState(false);
   const [terms, setTerms] = useState(false);
   const [testo, setTesto] = useState(false);
   const [experties, setExperties] = useState(false);
   const [service, setService] = useState(false);
   const [we, setWe] = useState(false);
+  const [menu, setMenu] = useState(true);
   const router = useRouter();
-  const path = router.asPath.split("#");
-  //
-  console.log(path.length, path[1]);
-  //   useEffect(() => {
-  //     router.push("/admin/settings#privacy&policy");
-  //   });
+  let path = router.asPath.split("#");
+  console.log("path", path[1]);
+
+  if (path[1] == undefined) {
+    console.log("bibash");
+    path[1] = "";
+  }
+
   const items: any = [
     { name: "Privacy & Policy", path: "" },
     { name: "Terms & Conditions", path: "terms&condition" },
+    { name: "Testonominial", path: "testonominial" },
+    { name: "Our Experties", path: "our-experties" },
+    { name: "Our Service", path: "our-service" },
+    { name: "Why We", path: "why-we" },
   ];
+
   return (
     <AdminLayout>
-      <div>
-        <div className="flex justify-between">
-          {items.map((a: any, index: any) => (
+      <div className="container m-auto">
+        <div className="sm:hidden">
+          {menu ? (
             <div
-              key={index}
-              className={
-                (path.length == 2 ? path[1] == `${a.path} ` : true)
-                  ? "p-1 bg-primary cursor-pointer"
-                  : "p-1 cursor-pointer"
-              }
-              onClick={() => {
-                console.log(path.length == 2 ? path[1] == `${a.path} ` : true);
-                router.push(`#${items[index].path}`);
-              }}
+              className="cursor-pointer cursor-pointer text-xl font-bold"
+              onClick={() => setMenu(false)}
+              style={{ color: "#0279b1" }}
             >
-              {a.name}
+              X
             </div>
-          ))}
-          <div
-            className={privacy ? "p-1 bg-primary" : "p-1"}
-            onClick={() => {
-              setPrivacy(true);
-              setTerms(false);
-              setTesto(false);
-              setExperties(false);
-              setService(false);
-              setWe(false);
-            }}
-          >
-            {" "}
-            Privacy & Policy
-          </div>
-          <div
-            className={terms ? "p-1 bg-primary" : "p-1"}
-            onClick={() => {
-              setPrivacy(false);
-              setTerms(true);
-              setTesto(false);
-              setExperties(false);
-              setService(false);
-              setWe(false);
-            }}
-          >
-            {" "}
-            Terms & Conditions
-          </div>
-          <div
-            className={testo ? "p-1 bg-primary" : "p-1"}
-            onClick={() => {
-              setPrivacy(false);
-              setTerms(false);
-              setTesto(true);
-              setExperties(false);
-              setService(false);
-              setWe(false);
-            }}
-          >
-            {" "}
-            Testonominial
-          </div>
-          <div
-            className={experties ? "p-1 bg-primary" : "p-1"}
-            onClick={() => {
-              setPrivacy(false);
-              setTerms(false);
-              setTesto(false);
-              setExperties(true);
-              setService(false);
-              setWe(false);
-            }}
-          >
-            {" "}
-            Our Experties
-          </div>
-          <div
-            className={service ? "p-1 bg-primary" : "p-1"}
-            onClick={() => {
-              setPrivacy(false);
-              setTerms(false);
-              setTesto(false);
-              setExperties(false);
-              setService(true);
-              setWe(false);
-            }}
-          >
-            {" "}
-            Our service
-          </div>
-          <div
-            className={we ? "p-1 bg-primary" : "p-1"}
-            onClick={() => {
-              setPrivacy(false);
-              setTerms(false);
-              setTesto(false);
-              setExperties(false);
-              setService(false);
-              setWe(true);
-            }}
-          >
-            {" "}
-            why we
-          </div>
+          ) : (
+            <div
+              className="cursor-pointer text-2xl font-bold animate-bounce"
+              onClick={() => setMenu(true)}
+              style={{ color: "#0279b1" }}
+            >
+              +
+            </div>
+          )}
         </div>
-        {privacy && <div className=""> for privacy and policy</div>}
-        {terms && <div className=""> for terms and condition</div>}
-        {testo && <div className=""> for privacy and policy</div>}
-        {experties && <div className=""> for terms and condition</div>}
-        {service && <div className=""> for privacy and policy</div>}
-        {we && <div className=""> for privacy and policy</div>}
+
+        {menu && (
+          <div className="flex flex-wrap">
+            {items.map((a: any, index: any) => (
+              <div
+                key={index}
+                className={
+                  path[1] != a.path
+                    ? "p-2 cursor-pointer flex"
+                    : "p-2 bg-primary cursor-pointer"
+                }
+                onClick={() => {
+                  router.push(`#${items[index].path}`);
+                }}
+              >
+                {a.name}
+              </div>
+            ))}
+          </div>
+        )}
+        {path[1] == "" && <Privacy></Privacy>}
+        {path[1] == "terms&condition" && <Terms></Terms>}
+        {path[1] == "testonominial" && <Testo></Testo>}
+        {path[1] == "our-experties" && <Experties></Experties>}
+        {path[1] == "our-service" && <Service></Service>}
+        {path[1] == "why-we" && <Whywe></Whywe>}
       </div>
     </AdminLayout>
   );

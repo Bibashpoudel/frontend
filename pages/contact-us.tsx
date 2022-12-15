@@ -22,7 +22,7 @@ export default function Contactus() {
   const submitHandler = async ({ fullname, email, phone, message }: any) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:5001/api/v1/contact/send-message",
+        "https://www.pacecode.com.np/api/v1/contact/send-message",
         {
           fullName: fullname,
           email: email,

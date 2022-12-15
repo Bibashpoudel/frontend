@@ -57,7 +57,7 @@ export default function Layout({ title, children, description }: any) {
     <>
       <Head>
         <title>{title ? title + " - Pace Code" : "Pace Code"}</title>
-
+        <meta name="msvalidate.01" content="C43EC445421B3EB12F4F4699ACFC8609" />
         <meta
           content="PaceCode"
           name="author"

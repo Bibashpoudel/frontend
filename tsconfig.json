@@ -21,7 +21,8 @@
     "**/*.tsx",
     "components/check.js",
     "utils/store.js",
-    "utils/gtab.js"
+    "utils/gtab.js",
+    "components/Ckeditor.js"
   ],
   "exclude": ["node_modules"]
 }

@@ -46,18 +46,12 @@ export default function AdminLayout({ title, description, children }: any) {
 
         <link rel="icon" href="/images/logo.png" type="image/x-icon"></link>
       </Head>
-      <div className="flex  min-h-screen flex-col justify-between">
+      <div className="flex  min-h-screen  flex-col justify-between">
         <div className="flex ">
           <nav
-            className={
-              sidebar
-                ? "shadow-md  admin-sidebar "
-                : "shadow-md  admin-sidebar "
-            }
+            className={"shadow-md  admin-sidebar w-96  max-sm:w-16"}
             style={
-              sidebar
-                ? { height: "100vh", width: "300px" }
-                : { height: "100vh", width: "80px" }
+              sidebar ? { height: "100vh" } : { height: "100vh", width: "4rem" }
             }
           >
             <div className="flex justify-center">
@@ -102,8 +96,8 @@ export default function AdminLayout({ title, description, children }: any) {
                         <li
                           className={
                             router.pathname == `${a.path}`
-                              ? "pl-10 p-2 bg-primary cursor-pointer"
-                              : "pl-10 p-2 cursor-pointer"
+                              ? "pl-10 p-2 bg-primary cursor-pointer max-sm:hidden"
+                              : "pl-10 p-2 cursor-pointer max-sm:hidden"
                           }
                           key={index}
                           onClick={() => router.push(`${a.path}`)}
@@ -120,8 +114,8 @@ export default function AdminLayout({ title, description, children }: any) {
             </div>
           </nav>
           <div className="flex flex-col w-full">
-            <header className="w-full bg-white shadow-md">
-              <div className="flex">
+            <header className="flex w-full h-12 bg-white shadow-md items-center">
+              <div className=" ">
                 {sidebar ? (
                   <div onClick={() => setSideBar(false)}>hide bar</div>
                 ) : (
@@ -129,7 +123,7 @@ export default function AdminLayout({ title, description, children }: any) {
                 )}
               </div>
             </header>
-            <main> reigst side{children}</main>
+            <main className="p-4"> {children}</main>
           </div>
         </div>
         <footer>

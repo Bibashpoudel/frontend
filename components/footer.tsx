@@ -29,7 +29,7 @@ export default function Footer({ nav }: any) {
   const submitHandler = async ({ email }: any) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:5001/api/v1/contact/news-letter",
+        "https://www.pacecode.com.np/api/v1/contact/news-letter",
         {
           email,
         },
