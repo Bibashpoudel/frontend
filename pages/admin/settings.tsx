@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import AdminLayout from "../../components/AdminLayout";
-import Experties from "../../components/components/Experties";
-import Privacy from "../../components/components/Privacy";
-import Service from "../../components/components/Service";
-import Terms from "../../components/components/Terms";
-import Testo from "../../components/components/Testo";
-import Whywe from "../../components/components/Whywe";
+import Experties from "../../components/Experties";
+import Privacy from "../../components/Privacy";
+import Service from "../../components/Service";
+import Terms from "../../components/Terms";
+import Testo from "../../components/Testo";
+import Whywe from "../../components/Whywe";
 
 export default function Settings() {
   const [privacy, setPrivacy] = useState(false);
