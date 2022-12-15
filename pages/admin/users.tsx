@@ -19,7 +19,7 @@ export default function Users() {
   }, []);
 
   return (
-    <AdminLayout>
+    <AdminLayout title={"Admin"} description={"Admin site of pacecode"}>
       {user &&
         user.map((a: any, index: any) => (
           <div key={index} className="card">
