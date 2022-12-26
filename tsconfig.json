@@ -20,9 +20,10 @@
     "**/*.ts",
     "**/*.tsx",
     "components/check.js",
-    "utils/store.js",
+    "utils/store.ts",
     "utils/gtab.js",
-    "components/Ckeditor.js"
+    "components/Ckeditor.js",
+    "redux/constant/jobs.constants.js"
   ],
   "exclude": ["node_modules"]
 }

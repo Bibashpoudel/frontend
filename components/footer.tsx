@@ -15,6 +15,9 @@ import Link from "next/link";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
+import { NewsletterSubmit } from "../redux/actions/news.Action";
+import { RootState } from "../utils/store";
 
 export default function Footer({ nav }: any) {
   const {
@@ -25,22 +28,15 @@ export default function Footer({ nav }: any) {
   } = useForm();
 
   const router = useRouter();
+  const subscribe = useSelector((state: RootState) => state.subscribe);
+  const dispatch = useDispatch();
+
+  const { loading, error, success }: any = subscribe;
 
   const submitHandler = async ({ email }: any) => {
     try {
-      const { data } = await axios.post(
-        "https://www.pacecode.com.np/api/v1/contact/news-letter",
-        {
-          email,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      );
-      if (data) {
+      dispatch(NewsletterSubmit(email) as any);
+      if (success) {
         Swal.fire(
           "Successfull!",
           "Your email has been save successfully!",

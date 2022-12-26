@@ -1,13 +1,44 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../utils/store";
+import getSession from "../utils/getSession";
+import { Logout } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import { signout } from "../redux/actions/user.action";
+import { USER_SIGNOUT } from "../redux/constant/user.constants";
+import getLocal from "../utils/getlocal";
 
-export default function AdminLayout({ title, description, children }: any) {
+export default function AdminLayout({
+  title,
+  description,
+  children,
+  loading,
+}: any) {
   const [sidebar, setSideBar] = useState(true);
   const router = useRouter();
   const path = router.pathname.split("#");
-  //   console.log(router);
+
+  const local = getLocal();
+
+  useEffect(() => {
+    if (!local) {
+      router.push("/admin/login");
+    }
+  }, [!local]);
+  const dispatch = useDispatch();
+  function logout(path: any) {
+    if (path == "/admin/login") {
+      dispatch(signout() as any);
+      dispatch({
+        type: USER_SIGNOUT,
+      });
+    }
+    router.push(`${path}`);
+  }
+
   return (
     <>
       <Head>
@@ -46,7 +77,12 @@ export default function AdminLayout({ title, description, children }: any) {
 
         <link rel="icon" href="/images/logo.png" type="image/x-icon"></link>
       </Head>
-      <div className="flex  min-h-screen  flex-col justify-between">
+      {loading && (
+        <div className="c-loading h-full overflow-hidden w-full bg-gray-100 opacity-95  flex items-center justify-center">
+          <span className="opacity-100 text-black"> loading..</span>
+        </div>
+      )}
+      <div className="flex min-h-screen flex-col justify-between">
         <div className="flex ">
           <nav
             className={"shadow-md  admin-sidebar w-96  max-sm:w-16"}
@@ -87,6 +123,14 @@ export default function AdminLayout({ title, description, children }: any) {
                       path: "/admin/blog",
                     },
                     {
+                      name: "Jobs",
+                      path: "/admin/add-jobs",
+                    },
+                    {
+                      name: "Applied Job",
+                      path: "/admin/applied-jobs",
+                    },
+                    {
                       name: "Log out ",
                       path: "/admin/login",
                     },
@@ -100,7 +144,7 @@ export default function AdminLayout({ title, description, children }: any) {
                               : "pl-10 p-2 cursor-pointer max-sm:hidden"
                           }
                           key={index}
-                          onClick={() => router.push(`${a.path}`)}
+                          onClick={() => logout(a.path)}
                         >
                           {a.name}
                         </li>
@@ -123,7 +167,10 @@ export default function AdminLayout({ title, description, children }: any) {
                 )}
               </div>
             </header>
-            <main className="p-4"> {children}</main>
+            <main className="p-4 overflow-y-scroll" style={{ height: "93vh" }}>
+              {" "}
+              {children}
+            </main>
           </div>
         </div>
         <footer>

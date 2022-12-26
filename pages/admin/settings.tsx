@@ -1,29 +1,25 @@
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import AdminLayout from "../../components/AdminLayout";
-import Experties from "../../components/Experties";
-import Privacy from "../../components/Privacy";
-import Service from "../../components/Service";
-import Terms from "../../components/Terms";
-import Testo from "../../components/Testo";
-import Whywe from "../../components/Whywe";
+import Experties from "./components/Experties";
+import Privacy from "./components/Privacy";
+import Service from "./components/Service";
+import Terms from "./components/Terms";
+import Testo from "./components/Testo";
+import Whywe from "./components/Whywe";
 
-export default function Settings() {
-  const [privacy, setPrivacy] = useState(false);
-  const [terms, setTerms] = useState(false);
-  const [testo, setTesto] = useState(false);
-  const [experties, setExperties] = useState(false);
-  const [service, setService] = useState(false);
-  const [we, setWe] = useState(false);
+function Settings() {
+  // const [privacy, setPrivacy] = useState(false);
+  // const [terms, setTerms] = useState(false);
+  // const [testo, setTesto] = useState(false);
+  // const [experties, setExperties] = useState(false);
+  // const [service, setService] = useState(false);
+  // const [we, setWe] = useState(false);
   const [menu, setMenu] = useState(true);
   const router = useRouter();
   let path = router.asPath.split("#");
   console.log("path", path[1]);
-
-  if (path[1] == undefined) {
-    console.log("bibash");
-    path[1] = "";
-  }
 
   const items: any = [
     { name: "Privacy & Policy", path: "" },
@@ -86,3 +82,4 @@ export default function Settings() {
     </AdminLayout>
   );
 }
+export default dynamic(() => Promise.resolve(Settings), { ssr: false });

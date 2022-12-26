@@ -1,10 +1,8 @@
-import { BellIcon } from "@heroicons/react/24/outline";
-import { Facebook, Instagram, Twitter, YouTube } from "@mui/icons-material";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Script from "next/script";
+
 import React, { useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import slideImage from "../utils/imageslider";
@@ -12,24 +10,18 @@ import Footer from "./footer";
 import SideBar from "./SideMenu";
 import Slider from "./Slider";
 
-export default function Layout({ title, children, description }: any) {
+export default function Layout({
+  title,
+  children,
+  description,
+  image,
+  shortDesc,
+  loading,
+}: any) {
   const [open, setOpen] = useState(false);
   const [openModal, setopenModal] = useState(false);
   const router = useRouter();
-  // function createBubble() {
-  //   const section = document.querySelector(".canva");
-  //   const span = document.createElement("span");
-  //   var size = Math.random() * 60;
-  //   span.style.width = 20 + size + "px";
-  //   span.style.height = 20 + size + "px";
-  //   span.style.left = Math.random() * innerWidth + "px";
 
-  //   setTimeout(() => {
-  //     span.remove();
-  //   }, 3000);
-  // }
-
-  // setInterval(createBubble, 100);
   const nav = [
     {
       path: "/",
@@ -43,10 +35,10 @@ export default function Layout({ title, children, description }: any) {
     //   path: "/about-us",
     //   title: "About Us",
     // },
-    // {
-    //   path: "/career",
-    //   title: "Career",
-    // },
+    {
+      path: "/careers",
+      title: "Careers",
+    },
     // {
     //   path: "/blog",
     //   title: "Blog",
@@ -85,12 +77,19 @@ export default function Layout({ title, children, description }: any) {
         ></meta>
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
           style={{ userSelect: "text" }}
         ></meta>
 
-        <link rel="icon" href="/images/logo.png" type="image/x-icon"></link>
+        <link
+          rel="icon"
+          href="https://www.pacecode.com.np/image/assets/header.png"
+          type="image/x-icon"
+        ></link>
       </Head>
+      {loading && (
+        <div className="c-loading bg-gray-300 opacity-01 ">loading..</div>
+      )}
       <div className="flex  min-h-screen flex-col justify-between">
         <header className="sticky top-0 z-50 bg-white shadow-md">
           <nav className="container m-auto flex h-14 items-center justify-between ">
@@ -114,17 +113,42 @@ export default function Layout({ title, children, description }: any) {
                   height={100}
                   src="/images/logo.png"
                   style={{ width: "4rem ", height: "2rem" }}
-                  alt={"bibash"}
+                  alt={"Pace Code"}
                 />
               </Link>
             </div>
+
             <div className="flex">
-              <Link target="_blank" href="https://calendly.com/pacecode/30min">
-                <span className="p-3 button-primary">Lets talk</span>
-              </Link>
-              <Link href="/contact-us">
-                <span className="button-primary p-3 ml-2"> Contact Us</span>
-              </Link>
+              <div className="flex max-md:hidden">
+                {nav.map((item: any, id: any) => (
+                  <div
+                    className="pt-4 pl-2 pr-2 pb-4 text-black font-bold text-md "
+                    key={id}
+                  >
+                    <Link
+                      href={item.path}
+                      className={
+                        router.pathname == `${item.path}` ? "c-active" : ""
+                      }
+                    >
+                      {item.title.charAt(0).toUpperCase() + item.title.slice(1)}
+                    </Link>
+                  </div>
+                ))}
+              </div>
+              <div className="md:pt-4 ">
+                <Link
+                  target="_blank"
+                  href="https://calendly.com/pacecode/30min"
+                >
+                  <span className="p-3 button-primary">Lets talk</span>
+                </Link>
+              </div>
+              <div className="md:pt-4">
+                <Link href="/contact-us">
+                  <span className="button-primary p-3 ml-2"> Contact Us</span>
+                </Link>
+              </div>
             </div>
           </nav>
         </header>
@@ -134,30 +158,18 @@ export default function Layout({ title, children, description }: any) {
           setopenModal={setopenModal}
           item={nav}
         ></SideBar>
-        <Carousel>
-          {slideImage.map((item: any, id: any) => (
-            <Slider image={item} key={id}></Slider>
-          ))}
-        </Carousel>
-        <div
-          className="absolute z-10 max-md:hidden"
-          style={{ top: "10%", left: "5%" }}
-        >
-          <div className="flex container m-auto">
-            {nav.map((item: any, id: any) => (
-              <div className="p-4 text-white font-bold text-lg " key={id}>
-                <Link
-                  href={item.path}
-                  className={
-                    router.pathname == `${item.path}` ? "c-active" : ""
-                  }
-                >
-                  {item.title.charAt(0).toUpperCase() + item.title.slice(1)}
-                </Link>
-              </div>
+        {image && (
+          <Carousel>
+            {slideImage.map((item: any, id: any) => (
+              <Slider
+                image={item}
+                key={id}
+                customImg={image ? image : null}
+                shortDesc={shortDesc}
+              ></Slider>
             ))}
-          </div>
-        </div>
+          </Carousel>
+        )}
 
         <main className="">{children}</main>
         <footer>

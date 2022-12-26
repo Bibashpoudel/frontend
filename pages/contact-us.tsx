@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../components/Layout";
 import SmartphoneIcon from "@mui/icons-material/Smartphone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -8,6 +8,11 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { RootState } from "../utils/store";
+import { useDispatch } from "react-redux";
+import { contactUS } from "../redux/actions/news.Action";
+import imgContact from "../public/images/contactus.jpg";
 
 export default function Contactus() {
   const {
@@ -16,45 +21,35 @@ export default function Contactus() {
     setValue,
     formState: { errors },
   } = useForm();
-
+  const contatcUs = useSelector((state: RootState) => state.contatcUs);
+  const { loading, error, success }: any = contatcUs;
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const submitHandler = async ({ fullname, email, phone, message }: any) => {
-    try {
-      const { data } = await axios.post(
-        "https://www.pacecode.com.np/api/v1/contact/send-message",
-        {
-          fullName: fullname,
-          email: email,
-          phone: phone,
-          message: message,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      );
-      if (data) {
-        Swal.fire(
-          "Successfull!",
-          "Your message has been delivered!",
-          "success"
-        );
-        setValue("email", "");
-        setValue("phone", "");
-        setValue("fullname", "");
-        setValue("message", "");
-      }
-    } catch (error) {}
+    dispatch(contactUS(fullname, phone, message, email) as any);
   };
+  useEffect(() => {
+    if (success) {
+      Swal.fire("Successfull!", "Your message has been sent!", "success");
+      setValue("email", "");
+      setValue("phone", "");
+      setValue("fullname", "");
+      setValue("message", "");
+    }
+  }, [success]);
   return (
     <Layout
       title={"Contact Us | Tell us a little about yourself, and your project"}
       description={
         "We would like connecting with you. Tell us a little about yourself, your project, and the best way to contact you. We'll get back to you right away."
       }
+      shortDesc={{
+        title: "Tell us a little about yourself, and your project",
+        desc: "We would like connecting with you. Tell us a little about yourself, your project, and the best way to contact you",
+      }}
+      image={imgContact}
+      loading={loading}
     >
       <div className="contact bg-gray-300">
         <div className="container flex justify-between max-md:flex-col m-auto containers">

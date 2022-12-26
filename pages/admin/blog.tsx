@@ -3,6 +3,11 @@ import AdminLayout from "../../components/AdminLayout";
 
 import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
+export async function getServerSideProps(context: any) {
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+}
 export default function Blog() {
   const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
   const [list, setList] = useState(true);
@@ -135,7 +140,10 @@ export default function Blog() {
                 <JoditEditor
                   ref={editor}
                   value={content}
-                  onChange={(newContent) => setContent(newContent)}
+                  // onChange={(newContent) => setContent(newContent)}
+                  onBlur={(value) => {
+                    setContent(value);
+                  }} // preferred to use only this option to update the content for performance reasons
                 />
               </div>
               <div className="mb-10">

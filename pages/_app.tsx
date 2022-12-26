@@ -1,12 +1,13 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 
-import StoreProvider from "../utils/store";
 import Script from "next/script";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 import * as gtag from "../utils/gtab";
+import { store } from "../utils/store";
+import { Provider } from "react-redux";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -42,9 +43,9 @@ export default function App({ Component, pageProps }: AppProps) {
         `,
         }}
       />
-      <StoreProvider>
+      <Provider store={store}>
         <Component {...pageProps} />
-      </StoreProvider>
+      </Provider>
     </>
   );
 }

@@ -9,6 +9,8 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 import Card from "../components/Card";
 
+import home from "../public/images/home.png";
+
 export default function Home(): JSX.Element {
   const services = [
     {
@@ -218,7 +220,7 @@ export default function Home(): JSX.Element {
       position: "Co-founder",
       additionalPosition: "CA",
       name: "Rohit Lamichanne",
-      img: "/images/rohit.jpg",
+      img: "/images/rohit.jpeg",
       companyName: "Sevenoath",
       logo: "/images/logo.png",
     },
@@ -232,10 +234,16 @@ export default function Home(): JSX.Element {
         description={
           "Pace Code facilitates business owners in developing software products. We specialized in the creation of custom software development, enterprise system development, web and mobile applications, cyber security,  and cloud engineering."
         }
+        image={home}
+        shortDesc={{
+          title:
+            "We help you create a better business model, with our expertise",
+          desc: "Exceeding your Expectations in Software Development",
+        }}
       >
         <div className="">
           <div className="p-4 flex justify-center ">
-            <div className="font-bold text-3xl" style={{ color: "#0279b1" }}>
+            <div className="font-bold text-3xl " style={{ color: "#0279b1" }}>
               Our Service
             </div>
           </div>
