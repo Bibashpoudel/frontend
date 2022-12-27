@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import AdminLayout from "../../components/AdminLayout";
 import { getApplyJob } from "../../redux/actions/jobs.Action";
 import { RootState } from "../../utils/store";
+import { checkImageUrl } from "../../utils/url";
 
 export default function Applyed() {
   const [show, setShow] = useState(false);
@@ -17,7 +18,7 @@ export default function Applyed() {
   useEffect(() => {
     dispatch(getApplyJob() as any);
   }, []);
-  const url = process.env.NEXT_PUBLIC_CV_URL;
+  const url = checkImageUrl();
 
   const test = (id: any) => {
     setId(id);

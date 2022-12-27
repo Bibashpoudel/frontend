@@ -42,7 +42,7 @@ export default function Apply() {
       setValue("file", "");
       Swal.fire("Successfull!", "Your Resume has been submitted", "success");
     }
-  }, []);
+  }, [success]);
   return (
     <Layout title={"Apply Jobs"}>
       <div className="container m-auto">

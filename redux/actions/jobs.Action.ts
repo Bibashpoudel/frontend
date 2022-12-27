@@ -1,6 +1,7 @@
 import axios from "axios";
 import getLocal from "../../utils/getlocal";
-import checkUrl from "../../utils/url";
+import { checkUrl } from "../../utils/url";
+
 import {
   APPLY_JOB_FAIL,
   APPLY_JOB_LOADING,
@@ -38,7 +39,6 @@ export const getJobs = () => async (dispatch: any) => {
         "Access-Control-Allow-Origin": "*",
       },
     });
-    console.log("action run 3");
 
     dispatch({
       type: JOB_LIST_SUCCESS,
@@ -96,9 +96,13 @@ export const getadminJobs = () => async (dispatch: any) => {
     type: JOB_LIST_LOADING,
   });
   try {
-    console.log("action run 2");
-    const { data }: any = await axios.get(`${URL}/jobs/admin/get-jobs`);
-    console.log("action run 3");
+    const { data }: any = await axios.get(`${URL}/jobs/admin/get-jobs`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: `Bearer ${token?.access_token}`,
+      },
+    });
 
     dispatch({
       type: JOB_LIST_SUCCESS,

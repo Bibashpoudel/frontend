@@ -3,6 +3,14 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
+import { addPrivacy, getPrivacy } from "../../../redux/actions/settings.action";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../utils/store";
+import {
+  ADD_ITEMS_RESET,
+  ADD_PRIVACY_RESET,
+} from "../../../redux/constant/settings.constants";
 export async function getServerSideProps(context: any) {
   return {
     props: {}, // will be passed to the page component as props
@@ -12,57 +20,41 @@ export async function getServerSideProps(context: any) {
 export default function Privacy() {
   const editor = useRef(null);
   const [content, setContent] = useState("");
-  const [data, setData] = useState("");
-  const [id, setId] = useState("");
 
   const JoditEditor = dynamic(() => import("jodit-react"), { ssr: true });
   const config: any = { placeholder: "start writing...." };
-  const submit = async () => {
-    try {
-      const { data } = await axios.patch(
-        `http://localhost:5001/api/v1/setting/add-privacy/${id}`,
-        {
-          privacyData: content,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      );
-      if (data) {
-        Swal.fire(
-          "Successfull!",
-          "Your message has been delivered!",
-          "success"
-        );
-      }
-    } catch (error) {}
+
+  const privacyAdd = useSelector((state: RootState) => state.addPrivacy);
+  const { loading: a_loading, error: a_error, success }: any = privacyAdd;
+
+  const privacyGet = useSelector((state: RootState) => state.getPrivacy);
+  const { loading, error, privacy }: any = privacyGet;
+  const dispatch = useDispatch();
+  const submit = (id: any) => {
+    console.log("id", id);
+    dispatch(addPrivacy(id, content) as any);
   };
+
+  if (success) {
+    // Swal.fire("Successfull!", "Privacy updated successfully!", "success");
+
+    dispatch({
+      type: ADD_PRIVACY_RESET,
+    });
+    dispatch(getPrivacy() as any);
+  }
+
   useEffect(() => {
-    try {
-      const fetchData = async () => {
-        const { data }: any = await axios.get(
-          "http://localhost:5001/api/v1/setting/privacy"
-        );
-        console.log(data.data[0].privacyData);
-        setContent(data.data[0].privacyData);
-        setId(data.data[0]._id);
-      };
-      fetchData().catch(console.error);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [data]);
-  console.log(content, id);
+    dispatch(getPrivacy() as any);
+  }, [dispatch]);
+
   return (
     <div>
       <div className="">
         {
           <JoditEditor
             ref={editor}
-            value={content}
+            value={privacy?.data[0].privacyData}
             config={config}
             //onChange={(newContent) => setContent(newContent)}
             onBlur={(value) => {
@@ -76,7 +68,7 @@ export default function Privacy() {
           type="submit"
           value="Add"
           className=" w-full rounded-md border py-3 button-primary text-base cursor-pointer transition "
-          onClick={() => submit()}
+          onClick={() => submit(privacy?.data[0]._id)}
         />
       </div>
       <div dangerouslySetInnerHTML={{ __html: content }}></div>

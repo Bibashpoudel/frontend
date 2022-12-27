@@ -7,6 +7,12 @@ import {
   updateJobReducer,
 } from "../redux/reducers/job.reducer";
 import { contactUsReducer, newsReducer } from "../redux/reducers/news.reducer";
+import {
+  addPrivacyReducer,
+  addTermsReducer,
+  getPrivacyRedcuer,
+  getTermsRedcuer,
+} from "../redux/reducers/settings.reducer";
 import { userSigninReducer } from "../redux/reducers/user.reducer";
 // ...
 
@@ -20,6 +26,10 @@ export const store = configureStore({
     addJobs: addjobReducer,
     updateJobs: updateJobReducer,
     applyjob: jobApplyReducer,
+    addPrivacy: addPrivacyReducer,
+    addTerms: addTermsReducer,
+    getPrivacy: getPrivacyRedcuer,
+    getTerms: getTermsRedcuer,
   },
 });
 
