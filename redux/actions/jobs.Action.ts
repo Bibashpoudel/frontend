@@ -1,5 +1,6 @@
 import axios from "axios";
 import getLocal from "../../utils/getlocal";
+import checkUrl from "../../utils/url";
 import {
   APPLY_JOB_FAIL,
   APPLY_JOB_LOADING,
@@ -17,10 +18,11 @@ import {
   UPDATE_JOB_LOADING,
   UPDATE_JOB_SUCCESS,
 } from "../constant/jobs.constants";
-const URL = process.env.NEXT_PUBLIC_SERVER_URL;
+//const URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
 const token = getLocal();
-console.log("action token", token?.access_token);
+const URL = checkUrl();
+console.log(URL);
 
 export const getJobs = () => async (dispatch: any) => {
   console.log("action run");

@@ -17,7 +17,7 @@ export default function Applyed() {
   useEffect(() => {
     dispatch(getApplyJob() as any);
   }, []);
-  const url = process.env.NEXT_PUBLIC_CV_UR;
+  const url = process.env.NEXT_PUBLIC_CV_URL;
 
   const test = (id: any) => {
     setId(id);
