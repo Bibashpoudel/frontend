@@ -9,7 +9,6 @@ import { RootState } from "../utils/store";
 import { useDispatch } from "react-redux";
 import { getJobs } from "../redux/actions/jobs.Action";
 import Link from "next/link";
-import checkUrl from "../utils/url";
 
 export default function Careers(): JSX.Element {
   const jobsList = useSelector((state: RootState) => state.jobsList);
@@ -22,8 +21,6 @@ export default function Careers(): JSX.Element {
   useEffect(() => {
     dispatch(getJobs() as any);
   }, []);
-  const url = checkUrl();
-  console.log(url);
 
   return (
     <Layout

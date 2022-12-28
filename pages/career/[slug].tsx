@@ -27,9 +27,9 @@ export default function bibash() {
   console.log(job);
   return (
     <Layout title={job?.data?.title - job?.data?.stack} loading={loading}>
-      <div className="bg-gray-300 h-10 flex  flex-col justify-center">
+      <div className="bg-gray-300 h-12 flex  flex-col justify-center">
         <div className="container m-auto ">
-          <div>
+          <div className="h-auto">
             <span className="c-text">career </span>
             <span className="text-gray-500">
               / {job?.data?.title}-{job?.data?.stack}

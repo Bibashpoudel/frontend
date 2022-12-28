@@ -63,13 +63,14 @@ export default function Privacy() {
           />
         }
       </div>
+
       <div>
-        <input
-          type="submit"
-          value="Add"
-          className=" w-full rounded-md border py-3 button-primary text-base cursor-pointer transition "
+        <button
           onClick={() => submit(privacy?.data[0]._id)}
-        />
+          className="rounded-md border button-primary w-full py-3 text-base cursor-pointer transition"
+        >
+          Add
+        </button>
       </div>
       <div dangerouslySetInnerHTML={{ __html: content }}></div>
     </div>

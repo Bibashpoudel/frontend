@@ -14,11 +14,14 @@ export default function Terms() {
   }, [dispatch]);
   return (
     <Layout>
-      <div className="container m-auto p-4">
+      <div className="container m-auto ">
         {" "}
-        <div
-          dangerouslySetInnerHTML={{ __html: terms?.data[0].termsData }}
-        ></div>
+        <div className="shadow">
+          <div
+            className="p-4"
+            dangerouslySetInnerHTML={{ __html: terms?.data[0].termsData }}
+          ></div>
+        </div>
       </div>
     </Layout>
   );
