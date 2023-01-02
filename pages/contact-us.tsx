@@ -51,9 +51,9 @@ export default function Contactus() {
       image={imgContact}
       loading={loading}
     >
-      <div className="contact bg-gray-300">
-        <div className="container flex justify-between max-md:flex-col m-auto containers">
-          <div className="contactInfo md:w-1/2 text-white">
+      <div className="contact ">
+        <div className="container flex max-md:flex-col m-auto containers">
+          <div className="contactInfo ">
             <div className="boxs">
               <div className="icons">
                 <LocationOnIcon
@@ -100,9 +100,11 @@ export default function Contactus() {
               </div>
             </div>
           </div>
-          <div className="contactForm w-auto mb-10 mt-4">
-            <form onSubmit={handleSubmit(submitHandler)}>
-              <h2>Send Message</h2>
+          <div className="contactForm w-auto md:ml-20  shadow mb-10">
+            <form onSubmit={handleSubmit(submitHandler)} className="p-2">
+              <h2 className="text-center c-text sm:text-3xl max-sm:text-xl font-bold">
+                Send Message
+              </h2>
               <div className="inputBox">
                 <input
                   type="text"

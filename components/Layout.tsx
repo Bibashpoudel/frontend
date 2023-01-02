@@ -51,7 +51,7 @@ export default function Layout({
         <title>{title ? title + " - Pace Code" : "Pace Code"}</title>
         <meta name="msvalidate.01" content="C43EC445421B3EB12F4F4699ACFC8609" />
         <meta
-          content="PaceCode"
+          content="Pace Code"
           name="author"
           style={{ userSelect: "text" }}
         ></meta>
@@ -105,7 +105,7 @@ export default function Layout({
       <div className="flex  min-h-screen flex-col justify-between">
         <header className="sticky top-0 z-50 bg-white shadow-md">
           <nav className="container m-auto flex h-14 items-center justify-between px-1 ">
-            <div className="flex flex-start">
+            <div className="flex flex-start text-black items-center ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"

@@ -61,7 +61,7 @@ export default function SideBar({ open, setOpen, setopenModal, item }: any) {
                             className={
                               router.pathname == `${item.path}`
                                 ? "c-active"
-                                : ""
+                                : " text-black"
                             }
                           >
                             {item.title.charAt(0).toUpperCase() +

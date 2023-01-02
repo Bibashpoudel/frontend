@@ -37,6 +37,16 @@ a {
   }
 }
 
+/* 
+  design for input
+*/
+input {
+  color: black;
+}
+textarea {
+  color: black;
+}
+
 /* slider images */
 
 .mySlides {
@@ -373,7 +383,7 @@ img {
   display: flex;
   margin-left: 2rem;
   font-size: 1.6rem;
-  color: #fff;
+
   flex-direction: column;
   font-weight: 300;
 }
@@ -385,15 +395,9 @@ img {
 .contactForm {
   background-color: #fff;
   border-radius: 1rem;
+  flex-grow: 1;
 }
-.contactForm form {
-  padding: 6rem;
-}
-.contactForm h2 {
-  font-size: 3rem;
-  color: #0279b1;
-  font-weight: 500;
-}
+
 .contactForm .inputBox {
   position: relative;
   width: 100%;
@@ -403,13 +407,12 @@ img {
 .contactForm .inputBox textarea {
   width: 100% !important;
   padding: 0.5rem 0 !important;
-  font-size: 1.3rem !important;
+  font-size: 1.2rem !important;
   margin: 1rem 0 !important;
   border: none !important;
   border-radius: 0rem !important;
   border-bottom: 0.1rem solid #333 !important;
   outline: none !important;
-  background-color: #fff !important;
 }
 .contactForm .inputBox span {
   position: absolute;
@@ -422,12 +425,12 @@ img {
   color: #666;
 }
 .contactForm .inputBox input:focus ~ span,
-.contactForm .inputBox input:valid ~ span,
 .contactForm .inputBox textarea:focus ~ span,
-.contactForm .inputBox textarea:valid ~ span {
-  color: #0279b1;
+.contactForm .inputBox input:user-valid ~ span,
+.contactForm .inputBox textarea:user-valid ~ span {
   font-size: 1.2rem;
   transform: translateY(-2rem);
+  color: #0279b1;
 }
 .contactForm .inputBox button {
   width: 8rem;
@@ -467,6 +470,7 @@ img {
 
 .jodit-wysiwyg {
   padding: 2rem !important;
+  color: black;
 }
 
 /* custome loading */
@@ -498,4 +502,15 @@ ol {
   margin-bottom: 1rem;
 }
 .c-job-des span {
+}
+
+/* design joedit content */
+
+.s_text_block li font,
+li p span {
+  color: white;
+}
+main {
+  background-color: white;
+  color: black;
 }

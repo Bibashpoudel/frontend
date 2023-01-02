@@ -78,6 +78,7 @@ export default function Login() {
                         px-5
                         bg-[#FCFDFE]
                         text-base text-body-color
+                        text-black
                         placeholder-[#ACB6BE]
                         outline-none
                         focus-visible:shadow-none
@@ -109,6 +110,7 @@ export default function Login() {
                         px-5
                         bg-[#FCFDFE]
                         text-base text-body-color
+                        text-black
                         placeholder-[#ACB6BE]
                         outline-none
                         focus-visible:shadow-none
