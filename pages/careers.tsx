@@ -30,8 +30,8 @@ export default function Careers(): JSX.Element {
       }
       image={career}
       shortDesc={{
-        title: "We help you create a better business model, with our expertise",
-        desc: "Exceeding your Expectations in Software Development",
+        title: "Where we exchange the culture and talent",
+        desc: "With the great knowledge and experience, what to share the environment and culture then go ahead and drop your CV",
       }}
       loading={loading}
     >

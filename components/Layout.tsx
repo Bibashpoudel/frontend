@@ -88,12 +88,24 @@ export default function Layout({
         ></link>
       </Head>
       {loading && (
-        <div className="c-loading bg-gray-300 opacity-01 ">loading..</div>
+        <>
+          <section className="bg-gray-200 relative place-items-center grid h-screen w-screen gap-4">
+            <div className="bg-white w-24 h-24 absolute animate-pulse rounded-full shadow-xl"></div>
+
+            <Image
+              src="https://www.pacecode.com.np/image/assets/header.png"
+              style={{ height: "2rem" }}
+              height={100}
+              width={100}
+              alt="Loading..."
+            ></Image>
+          </section>
+        </>
       )}
       <div className="flex  min-h-screen flex-col justify-between">
         <header className="sticky top-0 z-50 bg-white shadow-md">
-          <nav className="container m-auto flex h-14 items-center justify-between ">
-            <div className="flex">
+          <nav className="container m-auto flex h-14 items-center justify-between px-1 ">
+            <div className="flex flex-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -174,11 +186,11 @@ export default function Layout({
         <main className="">{children}</main>
         <footer>
           <div className=" bg-gray-200 text-black shadow-inner h-auto ">
-            <div className="container m-auto flex justify-between">
+            <div className="container m-auto flex justify-between px-1">
               <Footer nav={nav}></Footer>
             </div>
           </div>
-          <div className=" flex h-10  justify-center items-center shadow-inner">
+          <div className=" flex h-10  justify-center items-center shadow-inner px-1">
             <div>Copyright &#169; 2022 Pace Code</div>
           </div>
         </footer>

@@ -40,3 +40,6 @@ styles/globals.css
 .env
 .env
 .env
+
+/public/sitemap*
+/public/robots*

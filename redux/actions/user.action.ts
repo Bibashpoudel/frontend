@@ -1,4 +1,5 @@
 import axios from "axios";
+import { checkUrl } from "../../utils/url";
 import {
   USER_SIGNIN_FAIL,
   USER_SIGNIN_REQUEST,
@@ -6,7 +7,7 @@ import {
   USER_SIGNOUT,
 } from "../constant/user.constants";
 
-const URL = process.env.NEXT_PUBLIC_SERVER_URL;
+const URL = checkUrl();
 
 export const Signin = (email: any, password: any) => async (dispatch: any) => {
   dispatch({

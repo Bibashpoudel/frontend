@@ -6,7 +6,12 @@ import {
   jobsReducer,
   updateJobReducer,
 } from "../redux/reducers/job.reducer";
-import { contactUsReducer, newsReducer } from "../redux/reducers/news.reducer";
+import {
+  contactUsReducer,
+  getmessageReducer,
+  getnewsReducer,
+  newsReducer,
+} from "../redux/reducers/news.reducer";
 import {
   addPrivacyReducer,
   addTermsReducer,
@@ -27,9 +32,20 @@ export const store = configureStore({
     updateJobs: updateJobReducer,
     applyjob: jobApplyReducer,
     addPrivacy: addPrivacyReducer,
+    /*
+     * add terms and condition
+     */
     addTerms: addTermsReducer,
+    /*
+     * get privacy and policy
+     */
     getPrivacy: getPrivacyRedcuer,
+    /*
+     *  get terms and condition
+     */
     getTerms: getTermsRedcuer,
+    newsList: getnewsReducer,
+    messagesList: getmessageReducer, //get all inqueires message
   },
 });
 

@@ -23,11 +23,11 @@ export default function Home(): JSX.Element {
       description:
         "Now integrate your web application to the comfort of your hand as we are experts to incorporate and develop both web and mobile applications using cross platform and native framework.",
     },
-    {
-      title: "Enterprise System Development",
-      description:
-        "Our highly experienced team, top engineering practice and creativity will ensure a highly integrated Enterprise system that will support your business process, information flows, reporting and data analysis.",
-    },
+    // {
+    //   title: "Enterprise System Development",
+    //   description:
+    //     "Our highly experienced team, top engineering practice and creativity will ensure a highly integrated Enterprise system that will support your business process, information flows, reporting and data analysis.",
+    // },
     {
       title: "Mobile Application Development",
       description:
@@ -43,11 +43,11 @@ export default function Home(): JSX.Element {
       description:
         "To provide businesses all around the world with the greatest IT services, we have the best IT talent and specialists working continuously.",
     },
-    // {
-    //   title: "Maintenance & Support",
-    //   description:
-    //     "Our relation does not end just after the delivery of the product but we have a trusted network of customers where we are known not just for our products but also our after sales service and support. We have a super team dedicated for maintenance and support service for all our clients.",
-    // },
+    {
+      title: "Maintenance & Support",
+      description:
+        "Our relation does not end just after the delivery of the product but we have a trusted network of customers where we are known not just for our products but also our after sales service and support. We have a super team dedicated for maintenance and support service for all our clients.",
+    },
     {
       title: "Cloud Computing",
       description:
@@ -207,11 +207,11 @@ export default function Home(): JSX.Element {
     {
       message:
         "Pace Code has helped in providing a proper solutions for our CRM, Now our customer database are secure than ever and analysis are an ease. Thank you for your upfront support. Cheers to the team for their dedicated work.",
-      position: "CEO",
+      position: "MD",
       additionalPosition: "",
       name: "Sunim Mainali",
       img: "/images/sunim.jpg",
-      companyName: "Techfortress",
+      companyName: "Bara Thari",
       logo: "/images/logo.png",
     },
     {
@@ -253,7 +253,7 @@ export default function Home(): JSX.Element {
               backgroundImage: `url("https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350%22")`,
             }}
           >
-            <div className=" container m-auto">
+            <div className=" container m-auto px-1">
               <div className=" grid grid-cols-1 gap-4 md:grid-cols-2 sm:grid-cols-2  lg:grid-cols-3 ">
                 {services.map((item: any, id: any) => (
                   <div
@@ -275,7 +275,7 @@ export default function Home(): JSX.Element {
               </div>
             </div>
           </div>
-          <div className="container m-auto custom-moto">
+          <div className="container m-auto custom-moto px-1">
             <div className="flex float-right">
               <div>
                 <Image
@@ -295,7 +295,7 @@ export default function Home(): JSX.Element {
             </div>
           </div>
 
-          <div className="container m-auto mt-44">
+          <div className="container m-auto mt-44 px-1">
             <div
               className="flex justify-center text-2xl font-bold border-b-2 shadow-md p-2"
               style={{ color: "#0279b1" }}
@@ -315,7 +315,7 @@ export default function Home(): JSX.Element {
               ))}
             </div>
           </div>
-          <div className="container m-auto mb-8">
+          <div className="container m-auto mb-8 px-1">
             <div className="flex flex-col ">
               <div className="flex justify-center">
                 <div
@@ -376,7 +376,7 @@ export default function Home(): JSX.Element {
             </div>
           </div> */}
           <div className="w-full bg-transparent">
-            <div className="container m-auto mb-4 ">
+            <div className="container m-auto mb-4 px-1">
               <div className="flex justify-center font-bold text-xl c-text mb-4">
                 {" "}
                 What Client Say About Us?

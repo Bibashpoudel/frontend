@@ -23,7 +23,6 @@ import {
 
 const token = getLocal();
 const URL = checkUrl();
-console.log(URL);
 
 export const getJobs = () => async (dispatch: any) => {
   console.log("action run");
@@ -90,19 +89,22 @@ export const getJobDetails = (slug: any) => async (dispatch: any) => {
     });
   }
 };
-export const getadminJobs = () => async (dispatch: any) => {
+export const getadminJobs = (page: any, size: any) => async (dispatch: any) => {
   console.log("action run");
   dispatch({
     type: JOB_LIST_LOADING,
   });
   try {
-    const { data }: any = await axios.get(`${URL}/jobs/admin/get-jobs`, {
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        Authorization: `Bearer ${token?.access_token}`,
-      },
-    });
+    const { data }: any = await axios.get(
+      `${URL}/jobs/admin/get-jobs?page=${page}&size=${size}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          Authorization: `Bearer ${token?.access_token}`,
+        },
+      }
+    );
 
     dispatch({
       type: JOB_LIST_SUCCESS,
@@ -261,27 +263,30 @@ export const applyJobAction =
     }
   };
 
-export const getApplyJob = () => async (dispatch: any) => {
-  dispatch({
-    type: JOB_ADD_LOADING,
-  });
-  try {
-    const { data } = await axios.get(`${URL}/jobs/apply/get-jobs`);
+export const getApplyJob =
+  (page: any, size: any, selected: any) => async (dispatch: any) => {
     dispatch({
-      type: JOB_LIST_SUCCESS,
-      payload: data,
+      type: JOB_ADD_LOADING,
     });
-  } catch (error: any) {
-    dispatch({
-      type: JOB_LIST_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.response.data.detail
-          ? error.response.data.detail
-          : error.message
-          ? error.message
-          : error,
-    });
-  }
-};
+    try {
+      const { data } = await axios.get(
+        `${URL}/jobs/apply/get-jobs?size=${size}&page=${page}&selected=${selected}`
+      );
+      dispatch({
+        type: JOB_LIST_SUCCESS,
+        payload: data,
+      });
+    } catch (error: any) {
+      dispatch({
+        type: JOB_LIST_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.response.data.detail
+            ? error.response.data.detail
+            : error.message
+            ? error.message
+            : error,
+      });
+    }
+  };

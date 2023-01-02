@@ -8,24 +8,37 @@ export default function Slider({ image, customImg, shortDesc }: any) {
   return (
     <Paper style={{ position: "relative" }}>
       {customImg ? (
-        <div
-          className=" w-full "
-          // width={1200}
-          // height={600}
-          // src={customImg}
-          // alt="theam"
-          // quality={100}
-          style={{
-            opacity: "0.5",
-            backgroundImage: `url('${customImg.src}')`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            minHeight: "550px",
-            height: "100%",
-            backgroundPosition: "center center",
-            backgroundAttachment: "fixed",
-          }}
-        />
+        <>
+          <div
+            className=" w-full "
+            // width={1200}
+            // height={600}
+            // src={customImg}
+            // alt="theam"
+            // quality={100}
+            style={{
+              backgroundImage: `url('${customImg.src}')`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              minHeight: "550px",
+              height: "100%",
+              backgroundPosition: "center center",
+              backgroundAttachment: "fixed",
+
+              zIndex: "-1000",
+            }}
+          />
+          <div
+            className="absolute w-full"
+            style={{
+              height: "550px",
+              backgroundColor: "black",
+              opacity: ".5",
+              zIndex: "1000",
+              top: "0%",
+            }}
+          ></div>
+        </>
       ) : (
         <Image
           className="w-full"
@@ -38,18 +51,15 @@ export default function Slider({ image, customImg, shortDesc }: any) {
       )}
       <div
         className="conatiner m-auto w-full absolute font-bold   text-center"
-        style={{ top: "50%" }}
+        style={{ top: "50%", zIndex: "10000" }}
       >
         {shortDesc && (
           <>
-            <div
-              className="text-2xl max-sm:text-lg "
-              style={{ color: "#0279b1" }}
-            >
+            <div className="text-2xl max-sm:text-lg text-white">
               {shortDesc?.title}
             </div>
-            <div className="text-lg max-sm:text-md text-gray-500 ">
-              <span style={{ backgroundColor: "" }}> {shortDesc?.desc}</span>
+            <div className="text-lg max-sm:text-md c-text ">
+              <span style={{ fontWeight: "300" }}> {shortDesc?.desc}</span>
             </div>
           </>
         )}

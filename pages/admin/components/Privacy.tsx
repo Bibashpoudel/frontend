@@ -21,7 +21,7 @@ export default function Privacy() {
   const editor = useRef(null);
   const [content, setContent] = useState("");
 
-  const JoditEditor = dynamic(() => import("jodit-react"), { ssr: true });
+  const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
   const config: any = { placeholder: "start writing...." };
 
   const privacyAdd = useSelector((state: RootState) => state.addPrivacy);
@@ -54,7 +54,7 @@ export default function Privacy() {
         {
           <JoditEditor
             ref={editor}
-            value={privacy?.data[0].privacyData}
+            value={privacy?.data[0]?.privacyData}
             config={config}
             //onChange={(newContent) => setContent(newContent)}
             onBlur={(value) => {

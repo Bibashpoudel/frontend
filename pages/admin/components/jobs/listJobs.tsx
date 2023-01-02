@@ -1,12 +1,24 @@
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getadminJobs, updateJob } from "../../../redux/actions/jobs.Action";
-import abc from "../../../utils/abc";
-import { RootState } from "../../../utils/store";
+import Pagination from "../../../../components/pagination";
+import { getadminJobs, updateJob } from "../../../../redux/actions/jobs.Action";
+import { UPDATE_JOB_RESET } from "../../../../redux/constant/jobs.constants";
+import abc from "../../../../utils/abc";
+import { RootState } from "../../../../utils/store";
 
 export default function ListJobs(list: any) {
+  const [page, setPage] = useState();
+  const [size, setSize] = useState();
+  const changePage = (val: any) => {
+    setPage(val);
+  };
+
+  const changeSize = (value: any) => {
+    console.log(value);
+    setSize(value);
+  };
   const router = useRouter();
   const dispatch = useDispatch();
   const jobsList = useSelector((state: RootState) => state.jobsList);
@@ -34,17 +46,20 @@ export default function ListJobs(list: any) {
   };
 
   useEffect(() => {
-    console.log("bibash called");
     if (list) {
-      dispatch(getadminJobs() as any);
+      dispatch(getadminJobs(page ? page : 1, size ? size : 10) as any);
     }
-
-    if (u_error === "Unauthorized" || l_error === "Unauthorized") {
-      console.log("Unauthorized");
-      const abd = abc();
-      console.log(abd);
+    if (u_success) {
+      dispatch(getadminJobs(page ? page : 1, size ? size : 10) as any);
+      dispatch({
+        type: UPDATE_JOB_RESET,
+      });
     }
-  }, []);
+  }, [dispatch, page, size, u_success]);
+  if (u_error == "Unauthorized" || l_error == "Unauthorized") {
+    console.log("Unauthorized");
+    abc();
+  }
 
   return (
     <div>
@@ -87,6 +102,13 @@ export default function ListJobs(list: any) {
             </div>
           ))}
         </div>
+        <Pagination
+          pageSize={jobs?.size}
+          setSize={changeSize}
+          page={jobs?.page}
+          setPage={changePage}
+          totalData={jobs?.totaldata}
+        ></Pagination>
       </div>
     </div>
   );

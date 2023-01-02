@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import AdminLayout from "../../components/AdminLayout";
+import AddJobs from "./components/jobs/addJobs";
+import ListJobs from "./components/jobs/listJobs";
 
-import AddJobs from "./components/addJobs";
-import ListJobs from "./components/listJobs";
 export async function getServerSideProps(context: any) {
   return {
     props: {}, // will be passed to the page component as props

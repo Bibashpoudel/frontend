@@ -1,31 +1,46 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import AdminLayout from "../../components/AdminLayout";
+import Pagination from "../../components/pagination";
+import { getNewsLetter } from "../../redux/actions/news.Action";
+import { RootState } from "../../utils/store";
 
 export default function Users() {
-  const [user, setUser] = useState([]);
+  const [page, setPage] = useState();
+  const [size, setSize] = useState();
+
+  const newsList = useSelector((state: RootState) => state.newsList);
+  const { loading, error, news }: any = newsList;
+
+  const dispatch = useDispatch();
   useEffect(() => {
-    try {
-      const fetchdata = async () => {
-        const { data }: any = await axios.get(
-          "https://www.pacecode.com.np/api/v1/contact/news-letter/users"
-        );
+    dispatch(getNewsLetter(page ? page : 1, size ? size : 10) as any);
+  }, [dispatch, page, size]);
+  const changePage = (val: any) => {
+    setPage(val);
+  };
 
-        setUser(data.data);
-      };
-
-      fetchdata().catch(console.error);
-    } catch (error) {}
-  }, []);
+  const changeSize = (value: any) => {
+    console.log(value);
+    setSize(value);
+  };
 
   return (
     <AdminLayout title={"Admin"} description={"Admin site of pacecode"}>
-      {user &&
-        user.map((a: any, index: any) => (
-          <div key={index} className="card">
-            {a.email}
-          </div>
-        ))}
+      {news?.data?.map((a: any, index: any) => (
+        <div key={index} className="card">
+          {a.email}
+        </div>
+      ))}
+      <Pagination
+        pageSize={news?.size}
+        setSize={changeSize}
+        page={news?.page}
+        setPage={changePage}
+        totalData={news?.totaldata}
+      ></Pagination>
     </AdminLayout>
   );
 }

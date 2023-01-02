@@ -4,9 +4,11 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import slugify from "slugify";
-import { addJob } from "../../../redux/actions/jobs.Action";
-import { RootState } from "../../../utils/store";
+
 import Swal from "sweetalert2";
+import { addJob } from "../../../../redux/actions/jobs.Action";
+import abc from "../../../../utils/abc";
+import { RootState } from "../../../../utils/store";
 
 export default function AddJobs() {
   const editor = useRef(null);
@@ -40,6 +42,10 @@ export default function AddJobs() {
       setValue("stack", "");
     }
   }, []);
+  if (error === "Unauthorized") {
+    console.log("Unauthorized");
+    abc();
+  }
   return (
     <div className="flex flex-col">
       <div className="text-2xl c-text text-center">Add Jobs</div>

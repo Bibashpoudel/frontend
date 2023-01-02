@@ -10,6 +10,14 @@ import { useDispatch } from "react-redux";
 import { signout } from "../redux/actions/user.action";
 import { USER_SIGNOUT } from "../redux/constant/user.constants";
 import getLocal from "../utils/getlocal";
+import ContactPageIcon from "@mui/icons-material/ContactPage";
+import SettingsIcon from "@mui/icons-material/Settings";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import ArticleIcon from "@mui/icons-material/Article";
+import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
+import ApprovalIcon from "@mui/icons-material/Approval";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 export default function AdminLayout({
   title,
@@ -99,59 +107,93 @@ export default function AdminLayout({
               />{" "}
             </div>
             <div className="">
-              <ul>
+              <ul className="-ml-6">
                 {
                   [
                     {
+                      icon: <DashboardIcon></DashboardIcon>,
                       name: "Dashboard",
                       path: "/admin",
                     },
                     {
+                      icon: <ContactPageIcon></ContactPageIcon>,
                       name: " User",
                       path: "/admin/users",
                     },
                     {
+                      icon: <MailOutlineIcon></MailOutlineIcon>,
                       name: "Inquire",
                       path: "/admin/inquire",
                     },
                     {
+                      icon: <SettingsIcon></SettingsIcon>,
                       name: "settings ",
                       path: "/admin/settings",
                     },
                     {
+                      icon: <ArticleIcon></ArticleIcon>,
                       name: "blog",
                       path: "/admin/blog",
                     },
                     {
+                      icon: <WorkOutlineIcon></WorkOutlineIcon>,
                       name: "Jobs",
                       path: "/admin/add-jobs",
                     },
                     {
+                      icon: <ApprovalIcon></ApprovalIcon>,
                       name: "Applied Job",
                       path: "/admin/applied-jobs",
                     },
                     {
+                      icon: <LogoutIcon></LogoutIcon>,
                       name: "Log out ",
                       path: "/admin/login",
                     },
                   ].map((a: any, index: any) => (
-                    <>
+                    <span key={index}>
                       {sidebar ? (
                         <li
                           className={
                             router.pathname == `${a.path}`
-                              ? "pl-10 p-2 bg-primary cursor-pointer max-sm:hidden"
-                              : "pl-10 p-2 cursor-pointer max-sm:hidden"
+                              ? "pl-10 p-2 bg-primary cursor-pointer "
+                              : "pl-10 p-2 cursor-pointer "
                           }
-                          key={index}
                           onClick={() => logout(a.path)}
                         >
-                          {a.name}
+                          <span
+                            className={
+                              router.pathname == `${a.path}`
+                                ? "c-white "
+                                : "c-text"
+                            }
+                          >
+                            {" "}
+                            {a.icon}
+                          </span>
+                          <span className="max-sm:hidden"> {a.name}</span>
                         </li>
                       ) : (
-                        <li key={index} className="text-red-500"></li>
+                        <li
+                          className={
+                            router.pathname == `${a.path}`
+                              ? "pl-10 p-2 bg-primary cursor-pointer "
+                              : "pl-10 p-2 cursor-pointer "
+                          }
+                          onClick={() => logout(a.path)}
+                        >
+                          <span
+                            className={
+                              router.pathname == `${a.path}`
+                                ? "c-white "
+                                : "c-text"
+                            }
+                          >
+                            {a.icon}
+                          </span>
+                        </li>
                       )}
-                    </>
+                    </span>
                   )) as any
                 }
               </ul>

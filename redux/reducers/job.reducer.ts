@@ -15,10 +15,11 @@ import {
   JOB_LIST_SUCCESS,
   UPDATE_JOB_FAIL,
   UPDATE_JOB_LOADING,
+  UPDATE_JOB_RESET,
   UPDATE_JOB_SUCCESS,
 } from "../constant/jobs.constants";
 
-export const initialState: any = {
+const initialState: any = {
   jobs: [],
   loading: false,
   error: null,
@@ -45,7 +46,7 @@ export const jobsReducer = (state = initialState, action: any) => {
   }
 };
 
-export const jobInitialstate: any = {
+const jobInitialstate: any = {
   job: {},
   loading: false,
   error: null,
@@ -109,6 +110,8 @@ export const updateJobReducer = (state = {}, action: any) => {
         loading: false,
         error: action.payload,
       };
+    case UPDATE_JOB_RESET:
+      return {};
     default:
       return { state };
   }
