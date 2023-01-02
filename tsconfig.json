@@ -23,7 +23,8 @@
     "utils/store.ts",
     "utils/gtab.js",
     "components/Ckeditor.js",
-    "redux/constant/jobs.constants.js"
+    "redux/constant/jobs.constants.js",
+    "next-sitemap.config.js"
   ],
   "exclude": ["node_modules"]
 }
