@@ -104,7 +104,7 @@ export default function Layout({
       )}
       <div className="flex  min-h-screen flex-col justify-between">
         <header className="sticky top-0 z-50 bg-white shadow-md">
-          <nav className="container m-auto flex h-14 items-center justify-between px-1 ">
+          <nav className="container pl-2 pr-2  m-auto flex h-14 items-center justify-between px-1 ">
             <div className="flex flex-start text-black items-center ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +186,7 @@ export default function Layout({
         <main className="">{children}</main>
         <footer>
           <div className=" bg-gray-200 text-black shadow-inner h-auto ">
-            <div className="container m-auto flex justify-between px-1">
+            <div className="container pl-2 pr-2  m-auto flex justify-between px-1">
               <Footer nav={nav}></Footer>
             </div>
           </div>

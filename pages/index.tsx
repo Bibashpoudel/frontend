@@ -211,7 +211,7 @@ export default function Home(): JSX.Element {
       additionalPosition: "",
       name: "Sunim Mainali",
       img: "/images/sunim.jpg",
-      companyName: "Bara Thari",
+      companyName: "Barha Thari",
       logo: "/images/logo.png",
     },
     {
@@ -253,7 +253,7 @@ export default function Home(): JSX.Element {
               backgroundImage: `url("https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350%22")`,
             }}
           >
-            <div className=" container m-auto px-1">
+            <div className=" container pl-2 pr-2  m-auto px-1">
               <div className=" grid grid-cols-1 gap-4 md:grid-cols-2 sm:grid-cols-2  lg:grid-cols-3 ">
                 {services.map((item: any, id: any) => (
                   <div
@@ -275,7 +275,7 @@ export default function Home(): JSX.Element {
               </div>
             </div>
           </div>
-          <div className="container m-auto custom-moto px-1">
+          <div className="container pl-2 pr-2  m-auto custom-moto px-1">
             <div className="flex float-right">
               <div>
                 <Image
@@ -295,7 +295,7 @@ export default function Home(): JSX.Element {
             </div>
           </div>
 
-          <div className="container m-auto mt-44 px-1">
+          <div className="container pl-2 pr-2  m-auto mt-44 px-1">
             <div
               className="flex justify-center text-2xl font-bold border-b-2 shadow-md p-2"
               style={{ color: "#0279b1" }}
@@ -315,7 +315,7 @@ export default function Home(): JSX.Element {
               ))}
             </div>
           </div>
-          <div className="container m-auto mb-8 px-1">
+          <div className="container pl-2 pr-2  m-auto mb-8 px-1">
             <div className="flex flex-col ">
               <div className="flex justify-center">
                 <div
@@ -349,7 +349,7 @@ export default function Home(): JSX.Element {
               </div>
             </div>
           </div>
-          {/* <div className="container m-auto mb-4">
+          {/* <div className="container pl-2 pr-2  m-auto mb-4">
             <div className="flex flex-col ">
               <div className="flex justify-center">
                 <div
@@ -376,7 +376,7 @@ export default function Home(): JSX.Element {
             </div>
           </div> */}
           <div className="w-full bg-transparent">
-            <div className="container m-auto mb-4 px-1">
+            <div className="container pl-2 pr-2  m-auto mb-4 px-1">
               <div className="flex justify-center font-bold text-xl c-text mb-4">
                 {" "}
                 What Client Say About Us?

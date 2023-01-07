@@ -35,7 +35,7 @@ export default function Careers(): JSX.Element {
       }}
       loading={loading}
     >
-      <div className="container m-auto mt-10 mb-10">
+      <div className="container pl-2 pr-2  m-auto mt-10 mb-10 ">
         <div className="flex flex-col">
           <div className="text-lg font-bold text-center c-text">
             Creating a fun and enjoyable work environment can lead to improved

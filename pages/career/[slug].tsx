@@ -28,7 +28,7 @@ export default function bibash() {
   return (
     <Layout title={job?.data?.title - job?.data?.stack} loading={loading}>
       <div className="bg-gray-300 h-12 flex  flex-col justify-center">
-        <div className="container m-auto ">
+        <div className="container pl-2 pr-2  m-auto ">
           <div className="h-auto">
             <span className="c-text">career </span>
             <span className="text-gray-500">
@@ -37,7 +37,7 @@ export default function bibash() {
           </div>
         </div>
       </div>
-      <div className="container m-auto mt-10 c-job-des">
+      <div className="container pl-2 pr-2  m-auto mt-10 c-job-des">
         <div className="flex justify-between">
           <div className="text-2xl max-md:text-lg c-text">
             {" "}

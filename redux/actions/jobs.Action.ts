@@ -266,7 +266,7 @@ export const applyJobAction =
 export const getApplyJob =
   (page: any, size: any, selected: any) => async (dispatch: any) => {
     dispatch({
-      type: JOB_ADD_LOADING,
+      type: JOB_LIST_LOADING,
     });
     try {
       const { data } = await axios.get(

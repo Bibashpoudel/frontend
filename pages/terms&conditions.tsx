@@ -14,7 +14,7 @@ export default function Terms() {
   }, [dispatch]);
   return (
     <Layout>
-      <div className="container m-auto ">
+      <div className="container pl-1 pr-1m-auto ">
         {" "}
         <div className="shadow">
           <div

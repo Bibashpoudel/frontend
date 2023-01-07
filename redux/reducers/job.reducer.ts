@@ -3,6 +3,7 @@ import { stat } from "fs";
 import {
   APPLY_JOB_FAIL,
   APPLY_JOB_LOADING,
+  APPLY_JOB_RESET,
   APPLY_JOB_SUCCESS,
   JOB_ADD_FAIL,
   JOB_ADD_LOADING,
@@ -133,6 +134,8 @@ export const jobApplyReducer = (state = {}, action: any) => {
         loading: false,
         error: action.payload,
       };
+    case APPLY_JOB_RESET:
+      return {};
     default:
       return { state };
   }

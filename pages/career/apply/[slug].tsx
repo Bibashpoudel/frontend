@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import Layout from "../../../components/Layout";
 import { applyJobAction } from "../../../redux/actions/jobs.Action";
+import { APPLY_JOB_RESET } from "../../../redux/constant/jobs.constants";
 import { RootState } from "../../../utils/store";
 
 export default function Apply() {
@@ -41,11 +42,14 @@ export default function Apply() {
       setValue("intro", "");
       setValue("file", "");
       Swal.fire("Successfull!", "Your Resume has been submitted", "success");
+      dispatch({
+        type: APPLY_JOB_RESET,
+      });
     }
   }, [success]);
   return (
     <Layout title={"Apply Jobs"}>
-      <div className="container m-auto">
+      <div className="container pl-2 pr-2  m-auto">
         <div className="flex flex-col w-full items-center">
           <div className="flex flex-col  items-center text-2xl c-text font-bold">
             {apply}
@@ -155,7 +159,14 @@ export default function Apply() {
                   type="file"
                   {...register("file", {
                     required: "CV is required",
+                    validate: {
+                      //lessThan10MB: (files) => files[0]?.size < 30000 || "Max 30kb"
+                      acceptedFormats: (files) =>
+                        ["application/pdf"].includes(files[0]?.type) ||
+                        "Only Pdf format is valid",
+                    },
                   })}
+                  accept=".pdf"
                   placeholder="add your Cv"
                   className=" w-full rounded-md border bordder-[#E9EDF4] py-3 px-5 bg-[#FCFDFE]text-base text-body-color placeholder-[#ACB6BE]
                         outline-none

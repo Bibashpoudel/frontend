@@ -52,7 +52,7 @@ export default function Contactus() {
       loading={loading}
     >
       <div className="contact ">
-        <div className="container flex max-md:flex-col m-auto containers">
+        <div className="container pl-2 pr-2  flex max-md:flex-col m-auto containers">
           <div className="contactInfo ">
             <div className="boxs">
               <div className="icons">

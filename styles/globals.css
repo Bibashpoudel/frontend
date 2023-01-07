@@ -426,8 +426,8 @@ img {
 }
 .contactForm .inputBox input:focus ~ span,
 .contactForm .inputBox textarea:focus ~ span,
-.contactForm .inputBox input:user-valid ~ span,
-.contactForm .inputBox textarea:user-valid ~ span {
+.contactForm .inputBox input:valid ~ span,
+.contactForm .inputBox textarea:valid ~ span {
   font-size: 1.2rem;
   transform: translateY(-2rem);
   color: #0279b1;
