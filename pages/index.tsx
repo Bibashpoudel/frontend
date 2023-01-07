@@ -210,7 +210,7 @@ export default function Home(): JSX.Element {
       position: "MD",
       additionalPosition: "",
       name: "Sunim Mainali",
-      img: "/images/sunim.jpg",
+      img: "/images/sunim1.jpg",
       companyName: "Barha Thari",
       logo: "/images/logo.png",
     },
