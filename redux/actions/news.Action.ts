@@ -57,7 +57,7 @@ export const contactUS =
   (fullName: any, phone: any, message: any, email: any) =>
   async (dispatch: any) => {
     dispatch({
-      types: CONTACT_US_LOADING,
+      type: CONTACT_US_LOADING,
       payload: { fullName, phone, message, email },
     });
     try {

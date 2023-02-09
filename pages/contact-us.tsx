@@ -13,6 +13,7 @@ import { RootState } from "../utils/store";
 import { useDispatch } from "react-redux";
 import { contactUS } from "../redux/actions/news.Action";
 import imgContact from "../public/images/contactus.jpg";
+import { CONTACT_US_RESET } from "../redux/constant/news.constants";
 
 export default function Contactus() {
   const {
@@ -36,6 +37,9 @@ export default function Contactus() {
       setValue("phone", "");
       setValue("fullname", "");
       setValue("message", "");
+      dispatch({
+        type: CONTACT_US_RESET,
+      });
     }
   }, [success]);
   return (

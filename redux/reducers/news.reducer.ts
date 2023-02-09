@@ -4,12 +4,14 @@ import {
   CONTACT_LIST_SUCCESS,
   CONTACT_US_FAIL,
   CONTACT_US_LOADING,
+  CONTACT_US_RESET,
   CONTACT_US_SUCCESS,
   NEWS_LIST_FAIL,
   NEWS_LIST_LOADING,
   NEWS_LIST_SUCCESS,
   NEWS_SUBMIT_FAIL,
   NEWS_SUBMIT_LOADING,
+  NEWS_SUBMIT_RESET,
   NEWS_SUBMIT_SUCCESS,
 } from "../constant/news.constants";
 
@@ -30,6 +32,8 @@ export const newsReducer = (state = {}, action: any) => {
         loading: false,
         error: action.payload,
       };
+    case NEWS_SUBMIT_RESET:
+      return {};
 
     default:
       return state;
@@ -52,6 +56,8 @@ export const contactUsReducer = (state = {}, action: any) => {
         loading: false,
         error: action.payload,
       };
+    case CONTACT_US_RESET:
+      return {};
     default:
       return state;
   }

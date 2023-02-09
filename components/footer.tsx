@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { NewsletterSubmit } from "../redux/actions/news.Action";
 import { RootState } from "../utils/store";
+import { NEWS_SUBMIT_RESET } from "../redux/constant/news.constants";
 
 export default function Footer({ nav }: any) {
   const {
@@ -43,6 +44,9 @@ export default function Footer({ nav }: any) {
           "success"
         );
         setValue("email", "");
+        dispatch({
+          type: NEWS_SUBMIT_RESET,
+        });
         setTimeout(() => {
           router.push(router.pathname);
         }, 5000);
