@@ -39,10 +39,10 @@ export default function Layout({
       path: "/careers",
       title: "Careers",
     },
-    // {
-    //   path: "/blog",
-    //   title: "Blog",
-    // },
+    {
+      path: "/blog",
+      title: "Blog",
+    },
   ];
 
   return (
@@ -76,6 +76,11 @@ export default function Layout({
           content="private"
           style={{ userSelect: "text" }}
         ></meta>
+        {/* <meta
+          httpEquiv="Content-Security-Policy"
+          content={`default-src 'self'; img-src https://*; child-src 'none';`}
+        /> */}
+
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"

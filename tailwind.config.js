@@ -7,6 +7,7 @@ module.exports = {
   ],
   theme: {
     extend: {},
+
     listStyleType: {
       none: "none",
       disc: "disc",
@@ -14,6 +15,7 @@ module.exports = {
       square: "square",
       roman: "upper-roman",
     },
+
     // theme: {
     //   screens: {
     //     ab: "450px",

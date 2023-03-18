@@ -220,6 +220,9 @@ img {
 
 /* social media link design */
 
+.p-hover:hover {
+  color: #0279b1;
+}
 .c-icon {
   transition: transform 0.8s;
 }
