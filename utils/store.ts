@@ -1,5 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
+  addBlogReducer,
+  addCategoryReducer,
+  deleteBlogReducer,
+  deleteCategoryReducer,
+  getBlogReducer,
+  getCategoriesReducer,
+  updateBlogReducer,
+  updateCategoryReducer,
+} from "../redux/reducers/blog.reducer";
+import {
   addjobReducer,
   jobApplyReducer,
   jobReducer,
@@ -46,6 +56,20 @@ export const store = configureStore({
     getTerms: getTermsRedcuer,
     newsList: getnewsReducer,
     messagesList: getmessageReducer, //get all inqueires message
+
+    //categories curd actions
+
+    addCategory: addCategoryReducer,
+    updateCategory: updateCategoryReducer,
+    deleteCategory: deleteCategoryReducer,
+    listcategories: getCategoriesReducer,
+
+    //blog curd actions
+
+    addBlog: addBlogReducer,
+    updateBlog: updateBlogReducer,
+    deleteBlog: deleteBlogReducer,
+    listBlogs: getBlogReducer,
   },
 });
 

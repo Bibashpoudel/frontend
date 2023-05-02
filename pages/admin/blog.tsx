@@ -1,8 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AdminLayout from "../../components/AdminLayout";
 
 import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { addCategoryAction } from "../../redux/actions/blog.action";
+import { useSelector } from "react-redux";
+import { RootState } from "../../utils/store";
+import Swal from "sweetalert2";
+import { RESET_CATEGORIES } from "../../redux/constant/blog.constants";
 export async function getServerSideProps(context: any) {
   return {
     props: {}, // will be passed to the page component as props
@@ -17,6 +23,9 @@ export default function Blog() {
   const [content, setContent] = useState("");
   const [tags, setTags] = useState([]);
 
+  const addCategory = useSelector((state: RootState) => state.addCategory);
+  const { loading, error, success }: any = addCategory;
+  const dispatch = useDispatch();
   const {
     handleSubmit,
     register,
@@ -37,7 +46,19 @@ export default function Blog() {
   };
   const addBlog = () => {};
 
-  const addCat = () => {};
+  const addCat = (name: any) => {
+    console.log(name);
+    dispatch(addCategoryAction((name = name.categories)) as any);
+  };
+
+  useEffect(() => {
+    if (success) {
+      Swal.fire("Successfull!", "Your message has been delivered!", "success");
+
+      setValue("categories", "");
+      dispatch({ type: RESET_CATEGORIES });
+    }
+  }, [success]);
 
   return (
     <AdminLayout>
