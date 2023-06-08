@@ -18,6 +18,9 @@ import ArticleIcon from "@mui/icons-material/Article";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import ApprovalIcon from "@mui/icons-material/Approval";
 import LogoutIcon from "@mui/icons-material/Logout";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export default function AdminLayout({
   title,
@@ -200,13 +203,21 @@ export default function AdminLayout({
             </div>
           </nav>
           <div className="flex flex-col w-full">
-            <header className="flex w-full h-12 bg-white shadow-md items-center">
+            <header className=" flex w-full h-12 bg-white shadow-md items-center border justify-between">
               <div className=" ">
                 {sidebar ? (
-                  <div onClick={() => setSideBar(false)}>hide bar</div>
+                  <div onClick={() => setSideBar(false)}>
+                    <ArrowBackIosIcon />
+                  </div>
                 ) : (
-                  <div onClick={() => setSideBar(true)}>show bar</div>
+                  <div onClick={() => setSideBar(true)}>
+                    <ArrowForwardIosIcon />
+                  </div>
                 )}
+              </div>
+              <div className="mr-10">
+                <AccountCircleIcon />{" "}
+                <span style={{ fontSize: "12px" }}>{local?.name}</span>
               </div>
             </header>
             <main className="p-4 overflow-y-scroll" style={{ height: "93vh" }}>

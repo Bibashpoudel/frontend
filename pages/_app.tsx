@@ -16,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
     const handleRouteChange = (url: any) => {
       gtag.pageview(url);
     };
+    console.log("hot jar", process.env.NEXT_PUBLIC_HJID);
 
     router.events.on("routeChangeComplete", handleRouteChange);
 
@@ -41,6 +42,20 @@ export default function App({ Component, pageProps }: AppProps) {
             page_path: window.location.pathname,
           });
         `,
+        }}
+      />
+
+      {/* <!-- Hotjar Tracking Code for https://www.pacecode.com.np --> */}
+      <Script
+        dangerouslySetInnerHTML={{
+          __html: `  (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:3473565,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`,
         }}
       />
       <Provider store={store}>

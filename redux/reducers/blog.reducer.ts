@@ -175,7 +175,7 @@ export const getCategoriesReducer = (
     case GET_CATEGORIES_SUCESS:
       return {
         loading: false,
-        jobs: action.payload,
+        categoires: action.payload,
       };
     case GET_CATEGORIES_FAIL:
       return {

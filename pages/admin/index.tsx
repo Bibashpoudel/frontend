@@ -8,7 +8,7 @@ export async function getServerSideProps(context: any) {
 export default function Home(): JSX.Element {
   return (
     <AdminLayout>
-      <div className="p-10"></div>
+      <div className="p-10">dashboard</div>
     </AdminLayout>
   );
 }

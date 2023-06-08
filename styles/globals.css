@@ -284,6 +284,12 @@ img {
   background-color: #126388;
 }
 
+/* primary  backgorund color */
+
+.pbg-color {
+  background-color: #0279b1;
+}
+
 @media only screen and (max-width: 1023px) {
   .custom-bg {
     height: 75rem;

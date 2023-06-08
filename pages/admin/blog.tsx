@@ -4,7 +4,10 @@ import AdminLayout from "../../components/AdminLayout";
 import dynamic from "next/dynamic";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { addCategoryAction } from "../../redux/actions/blog.action";
+import {
+  addCategoryAction,
+  getCategoriesAction,
+} from "../../redux/actions/blog.action";
 import { useSelector } from "react-redux";
 import { RootState } from "../../utils/store";
 import Swal from "sweetalert2";
@@ -23,8 +26,20 @@ export default function Blog() {
   const [content, setContent] = useState("");
   const [tags, setTags] = useState([]);
 
+  const [page, setPage] = useState();
+  const [size, setSize] = useState();
+
   const addCategory = useSelector((state: RootState) => state.addCategory);
   const { loading, error, success }: any = addCategory;
+
+  const listcategories = useSelector(
+    (state: RootState) => state.listcategories
+  );
+  const {
+    loading: listCat_load,
+    error: listCat_err,
+    categoires,
+  }: any = listcategories;
   const dispatch = useDispatch();
   const {
     handleSubmit,
@@ -46,9 +61,9 @@ export default function Blog() {
   };
   const addBlog = () => {};
 
-  const addCat = (name: any) => {
-    console.log(name);
-    dispatch(addCategoryAction((name = name.categories)) as any);
+  const addCat = (categoires: any) => {
+    console.log(categoires.categories);
+    dispatch(addCategoryAction(categoires.categoires) as any);
   };
 
   useEffect(() => {
@@ -58,7 +73,8 @@ export default function Blog() {
       setValue("categories", "");
       dispatch({ type: RESET_CATEGORIES });
     }
-  }, [success]);
+    dispatch(getCategoriesAction(page ? page : 1, size ? size : 10) as any);
+  }, [dispatch, success]);
 
   return (
     <AdminLayout>
@@ -216,32 +232,42 @@ export default function Blog() {
         )}
         {cat && (
           <div>
-            <form onSubmit={handleSubmit(addCat)}>
-              <div className="mb-4">
-                <div>Categories Name</div>
-                <input
-                  type="text"
-                  {...register("categories", {
-                    required: "categoires is required",
-                  })}
-                  placeholder="Enter Categories"
-                  className=" w-full rounded-md border bordder-[#E9EDF4] py-3 px-5 bg-[#FCFDFE]text-base text-body-color placeholder-[#ACB6BE]
+            <div>
+              {categoires.data.map((a: any, index: number) => (
+                <div className=" " key={index}>
+                  {a.name}
+                  <span className="mt-10">X</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+        <form onSubmit={handleSubmit(addCat)}>
+          <div className="mb-4">
+            <div>Categories Name</div>
+            <input
+              type="text"
+              {...register("categories", {
+                required: "categoires is required",
+              })}
+              placeholder="Enter Categories"
+              className=" w-full rounded-md border bordder-[#E9EDF4] py-3 px-5 bg-[#FCFDFE]text-base text-body-color placeholder-[#ACB6BE]
                         outline-none
                         focus-visible:shadow-none
                         focus:border-primary
                         "
-                />
-                {errors.categories && (
-                  <div className="text-red-500">
-                    {(errors.categories as any).message}
-                  </div>
-                )}
+            />
+            {errors.categories && (
+              <div className="text-red-500">
+                {(errors.categories as any).message}
               </div>
-              <div className="mb-10">
-                <input
-                  type="submit"
-                  value="Add"
-                  className="
+            )}
+          </div>
+          <div className="mb-10">
+            <input
+              type="submit"
+              value="Add"
+              className="
                                   w-full
                                   rounded-md
                                   border
@@ -251,11 +277,9 @@ export default function Blog() {
                                   cursor-pointer
                                   transition
                         "
-                />
-              </div>
-            </form>
+            />
           </div>
-        )}
+        </form>
       </div>
     </AdminLayout>
   );

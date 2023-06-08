@@ -36,7 +36,7 @@ export default function SideBar({ open, setOpen, setopenModal, item }: any) {
               >
                 <Dialog.Panel className="pointer-events-auto relative w-screen max-w-md">
                   <div
-                    className="flex h-14 items-center justify-center text-white"
+                    className="flex h-14  text-white"
                     onClick={() => {
                       setOpen(false), setopenModal(true);
                     }}
@@ -79,7 +79,7 @@ export default function SideBar({ open, setOpen, setopenModal, item }: any) {
                       onClick={() => setOpen(false)}
                     >
                       <span className="sr-only">Close panel</span>
-                      <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                      <XMarkIcon className="h-8 w-8" aria-hidden="true" />
                     </button>
                   </div>
                 </Dialog.Panel>

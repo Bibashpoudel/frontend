@@ -189,7 +189,7 @@ export const deleteBlog = (id: any) => async (dispatch: any) => {
 
 // categories actions
 
-export const getCategories =
+export const getCategoriesAction =
   (page: any, size: any) => async (dispatch: any) => {
     try {
       dispatch({
@@ -218,44 +218,46 @@ export const getCategories =
     }
   };
 
-export const addCategoryAction = (name: string) => async (dispatch: any) => {
-  try {
-    dispatch({
-      type: ADD_CATEGORIES_LOADING,
-      payload: { name },
-    });
+export const addCategoryAction =
+  (categories: string) => async (dispatch: any) => {
+    console.log(categories);
+    try {
+      dispatch({
+        type: ADD_CATEGORIES_LOADING,
+        payload: { categories },
+      });
 
-    const { data } = await axios.post(
-      `${URL}/add-category`,
-      {
-        name: name,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          Authorization: `Bearer ${token?.access_token}`,
+      const { data } = await axios.post(
+        `${URL}/add-category`,
+        {
+          name: categories,
         },
-      }
-    );
-    dispatch({
-      type: ADD_CATEGORIES_SUCESS,
-      payload: data,
-    });
-  } catch (error: any) {
-    dispatch({
-      type: ADD_CATEGORIES_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.response.data.detail
-          ? error.response.data.detail
-          : error.message
-          ? error.message
-          : error,
-    });
-  }
-};
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            Authorization: `Bearer ${token?.access_token}`,
+          },
+        }
+      );
+      dispatch({
+        type: ADD_CATEGORIES_SUCESS,
+        payload: data,
+      });
+    } catch (error: any) {
+      dispatch({
+        type: ADD_CATEGORIES_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.response.data.detail
+            ? error.response.data.detail
+            : error.message
+            ? error.message
+            : error,
+      });
+    }
+  };
 
 export const updateCategory =
   (id: string, name: string) => async (dispatch: any) => {

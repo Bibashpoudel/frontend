@@ -4,12 +4,15 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Script from "next/script";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import slideImage from "../utils/imageslider";
 import Footer from "./footer";
 import SideBar from "./SideMenu";
 import Slider from "./Slider";
+import { fabric } from "fabric";
+
+import { WhatsApp, Telegram } from "@mui/icons-material";
 
 export default function Layout({
   title,
@@ -22,6 +25,55 @@ export default function Layout({
   const [open, setOpen] = useState(false);
   const [openModal, setopenModal] = useState(false);
   const router = useRouter();
+
+  let lastScroll = 0;
+  let scrollTop = 0;
+  const dragRef: any = useRef(null);
+
+  const isClicked = useRef<boolean>(false);
+
+  useEffect(() => {
+    // const drag = dragRef.current;
+    // const onMouseDown = () => {
+    //   isClicked.current = true;
+    // };
+
+    // const onMouseup = () => {
+    //   isClicked.current = false;
+    // };
+
+    // const mouseMove = (e: MouseEvent) => {
+    //   if (!isClicked.current) return;
+
+    //   drag.style.top = `${e.clientY}px`;
+    //   drag.style.left = `${e.clientX}px`;
+    // };
+    // drag?.addEventListener("mousedown", onMouseDown);
+    // drag?.addEventListener("mouseup", onMouseup);
+    // drag?.addEventListener("mousemove", mouseMove);
+
+    // const clean = () => {
+    //   drag?.removeEventListener("mousedown", onMouseDown);
+    //   drag?.removeEventListener("mouseup", onMouseup);
+    //   drag?.removeEventListener("mousemove", mouseMove);
+    //   console.log("clean");
+    // };
+
+    const navbar: any = document.getElementById("top-nav");
+
+    window.addEventListener("scroll", function () {
+      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      console.log(scrollTop, lastScroll);
+      if (scrollTop > lastScroll) {
+        navbar.style.display = "none";
+      } else {
+        navbar.style.display = "flex";
+      }
+      lastScroll = scrollTop;
+    });
+
+    // return clean;
+  });
 
   const nav = [
     {
@@ -122,98 +174,147 @@ export default function Layout({
           </section>
         </>
       )}
-      <div className="flex  min-h-screen flex-col justify-between">
-        <header className="sticky top-0 z-50 bg-white shadow-md">
-          <nav className="container pl-2 pr-2  m-auto flex h-14 items-center justify-between px-1 ">
-            <div className="flex flex-start text-black items-center ">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-6 h-6 hidden max-md:block"
-                onClick={() => setOpen(true)}
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <Link href="/">
-                <Image
-                  width={100}
-                  height={100}
-                  src="/images/logo.png"
-                  style={{ width: "4rem ", height: "2rem" }}
-                  alt={"Pace Code"}
-                />
-              </Link>
-            </div>
 
-            <div className="flex">
-              <div className="flex max-md:hidden">
-                {nav.map((item: any, id: any) => (
-                  <div
-                    className="pt-4 pl-2 pr-2 pb-4 text-black font-bold text-md "
-                    key={id}
-                  >
-                    <Link
-                      href={item.path}
-                      className={
-                        router.pathname == `${item.path}` ? "c-active" : ""
-                      }
-                    >
-                      {item.title.charAt(0).toUpperCase() + item.title.slice(1)}
-                    </Link>
-                  </div>
-                ))}
+      <div>
+        <div className="flex  min-h-screen flex-col justify-between">
+          <header className="sticky top-0 z-50 bg-white shadow-md text-white">
+            <div
+              id="top-nav"
+              className="top-nav flex pbg-color "
+              style={{ height: "1.5rem" }}
+            >
+              <div className="pr-4 pl-4 c-icon">
+                {" "}
+                <Link target="_blank" href="https://wa.me/9779748307013">
+                  <WhatsApp
+                    style={{ height: "1rem", color: "#25D366" }}
+                  ></WhatsApp>
+                </Link>
               </div>
-              <div className="md:pt-4 ">
+              <div className="pr-4 pl-4 c-icon">
+                {" "}
+                <Link target="_blank" href="https://t.me/pacecode">
+                  <Telegram
+                    style={{ height: "1rem", color: "#fff" }}
+                  ></Telegram>
+                </Link>
+              </div>
+              {/* <div className="pr-4 pl-4">
+                {" "}
+                <Link target="_blank" href="">
+                  wechat
+                </Link>
+              </div> */}
+            </div>
+            <nav className="container pl-2 pr-2  m-auto flex h-14 items-center justify-between px-1 ">
+              <div className="flex flex-start text-black items-center ">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="w-6 h-6 hidden max-md:block"
+                  onClick={() => setOpen(true)}
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <Link href="/">
+                  <Image
+                    width={100}
+                    height={100}
+                    src="/images/logo.png"
+                    style={{ width: "6rem ", height: "3rem" }}
+                    alt={"Pace Code"}
+                  />
+                </Link>
+              </div>
+
+              <div className="flex">
+                <div className="flex max-md:hidden">
+                  {nav.map((item: any, id: any) => (
+                    <div
+                      className="pt-4 pl-2 pr-2 pb-4 text-black font-bold text-md "
+                      key={id}
+                    >
+                      <Link
+                        href={item.path}
+                        className={
+                          router.pathname == `${item.path}` ? "c-active" : ""
+                        }
+                      >
+                        {item.title.charAt(0).toUpperCase() +
+                          item.title.slice(1)}
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+                {/* <div className="md:pt-4 ">
                 <Link
                   target="_blank"
                   href="https://calendly.com/pacecode/30min"
                 >
                   <span className="p-3 button-primary">Lets talk</span>
                 </Link>
+              </div> */}
+                <div className="md:pt-4">
+                  <Link href="/contact-us">
+                    <span className="button-primary p-3 ml-2"> Contact Us</span>
+                  </Link>
+                </div>
               </div>
-              <div className="md:pt-4">
-                <Link href="/contact-us">
-                  <span className="button-primary p-3 ml-2"> Contact Us</span>
-                </Link>
-              </div>
-            </div>
-          </nav>
-        </header>
-        <SideBar
-          open={open}
-          setOpen={setOpen}
-          setopenModal={setopenModal}
-          item={nav}
-        ></SideBar>
-        {image && (
-          <Carousel>
-            {slideImage.map((item: any, id: any) => (
-              <Slider
-                image={item}
-                key={id}
-                customImg={image ? image : null}
-                shortDesc={shortDesc}
-              ></Slider>
-            ))}
-          </Carousel>
-        )}
+            </nav>
+          </header>
+          <SideBar
+            open={open}
+            setOpen={setOpen}
+            setopenModal={setopenModal}
+            item={nav}
+          ></SideBar>
+          {image && (
+            <Carousel>
+              {slideImage.map((item: any, id: any) => (
+                <Slider
+                  image={item}
+                  key={id}
+                  customImg={image ? image : null}
+                  shortDesc={shortDesc}
+                ></Slider>
+              ))}
+            </Carousel>
+          )}
 
-        <main className="">{children}</main>
-        <footer>
-          <div className=" bg-gray-200 text-black shadow-inner h-auto ">
-            <div className="container pl-2 pr-2  m-auto flex justify-between px-1">
-              <Footer nav={nav}></Footer>
+          <main className="">
+            <div
+              className="container "
+              style={{
+                position: "fixed",
+                zIndex: "100",
+                display: "flex",
+                justifyContent: "end",
+                right: 1,
+              }}
+              ref={dragRef}
+            >
+              {/* <Link href="/contact-us">
+                <span className="button-primary p-3 ml-2"> Contact Us</span>
+              </Link> */}
             </div>
-          </div>
-          <div className=" flex h-10  justify-center items-center shadow-inner px-1">
-            <div>Copyright &#169; 2022 Pace Code</div>
-          </div>
-        </footer>
+            {children}
+          </main>
+          <footer>
+            <div className=" bg-gray-200 text-black shadow-inner h-auto ">
+              <div className="container pl-2 pr-2  m-auto flex justify-between px-1">
+                <Footer nav={nav}></Footer>
+              </div>
+            </div>
+            <div className=" flex h-10  justify-center items-center shadow-inner px-1">
+              <div>Copyright &#169; 2023 Pace Code</div>
+            </div>
+          </footer>
+        </div>
       </div>
     </>
   );
