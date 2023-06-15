@@ -24,9 +24,9 @@ export default function Careers(): JSX.Element {
 
   return (
     <Layout
-      title={"Careers"}
+      title={"Join our team to create top-notch products | Pace Code"}
       description={
-        "Do you have a strong desire to produce influential digital products? Join PaceCode great team of top-notch engineers and innovative thinkers if you want to create top-notch products."
+        "Do you have a strong desire to produce influential digital products? Join a great team of top engineers and innovative thinkers to create top-notch products."
       }
       image={career}
       shortDesc={{

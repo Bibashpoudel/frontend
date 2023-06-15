@@ -10,7 +10,7 @@ import slideImage from "../utils/imageslider";
 import Footer from "./footer";
 import SideBar from "./SideMenu";
 import Slider from "./Slider";
-import { fabric } from "fabric";
+import { NextSeo } from "next-seo";
 
 import { WhatsApp, Telegram } from "@mui/icons-material";
 
@@ -18,6 +18,7 @@ export default function Layout({
   title,
   children,
   description,
+  ogTitle,
   image,
   shortDesc,
   loading,
@@ -101,9 +102,9 @@ export default function Layout({
   return (
     <>
       <Head>
-        <title>{title ? title + " - Pace Code" : "Pace Code"}</title>
+        <title>{title ? title : "Pace Code"}</title>
         <meta name="msvalidate.01" content="C43EC445421B3EB12F4F4699ACFC8609" />
-
+        <meta property="og:title" content={ogTitle ? ogTitle : "Pace Code"} />
         <meta
           content="Pace Code"
           name="author"

@@ -44,7 +44,7 @@ export default function Contactus() {
   }, [success]);
   return (
     <Layout
-      title={"Contact Us | Tell us a little about yourself, and your project"}
+      title={"Tell us a little about yourself, and your project | Pace Code"}
       description={
         "We would like connecting with you. Tell us a little about yourself, your project, and the best way to contact you. We'll get back to you right away."
       }

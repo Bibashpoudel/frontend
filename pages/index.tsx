@@ -228,9 +228,7 @@ export default function Home(): JSX.Element {
   return (
     <>
       <Layout
-        title={
-          "Pace Code | Exceeding your Expectations in Software Development  "
-        }
+        title={"Exceeding, Expectations in Software Development | Pace Code"}
         description={
           "Pace Code facilitates business owners in developing software products. We specialized in the creation of custom software development, enterprise system development, web and mobile applications, cyber security,  and cloud engineering."
         }
@@ -240,6 +238,7 @@ export default function Home(): JSX.Element {
             "We help you create a better business model, with our expertise",
           desc: "Exceeding your Expectations in Software Development",
         }}
+        ogTitle={"Pace Code | Home"}
       >
         <div className="">
           <div className="p-4 flex justify-center ">
