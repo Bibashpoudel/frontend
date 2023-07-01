@@ -43,3 +43,5 @@ styles/globals.css
 
 /public/sitemap*
 /public/robots*
+# Sentry Auth Token
+.sentyclirc

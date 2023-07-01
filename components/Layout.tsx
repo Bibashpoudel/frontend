@@ -64,13 +64,15 @@ export default function Layout({
 
     window.addEventListener("scroll", function () {
       scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      console.log(scrollTop, lastScroll);
+
       if (scrollTop > lastScroll) {
         navbar.style.display = "none";
       } else {
         navbar.style.display = "flex";
       }
-      lastScroll = scrollTop;
+      if (scrollTop > 50) {
+        lastScroll = scrollTop;
+      }
     });
 
     // return clean;
@@ -141,11 +143,7 @@ export default function Layout({
           style={{ userSelect: "text" }}
         ></meta>
 
-        <link
-          rel="icon"
-          href="https://www.pacecode.com.np/image/assets/header.png"
-          type="image/x-icon"
-        ></link>
+        <link rel="icon" href="/header.png" type="image/x-icon"></link>
 
         <Script
           dangerouslySetInnerHTML={{
@@ -166,7 +164,7 @@ export default function Layout({
             <div className="bg-white w-24 h-24 absolute animate-pulse rounded-full shadow-xl"></div>
 
             <Image
-              src="https://www.pacecode.com.np/image/assets/header.png"
+              src="/header.png"
               style={{ height: "2rem" }}
               height={100}
               width={100}
@@ -224,11 +222,11 @@ export default function Layout({
                 </svg>
                 <Link href="/">
                   <Image
-                    width={100}
-                    height={100}
+                    alt={"Pace Code"}
                     src="/images/logo.png"
                     style={{ width: "6rem ", height: "3rem" }}
-                    alt={"Pace Code"}
+                    width={100}
+                    height={100}
                   />
                 </Link>
               </div>
