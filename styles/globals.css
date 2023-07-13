@@ -37,6 +37,19 @@ a {
   }
 }
 
+/* design for nav bar */
+
+#top-nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+#top-nav div {
+  float: left;
+}
+#c-nav {
+  margin-top: 1.5rem;
+}
 /* 
   design for input
 */
@@ -328,6 +341,14 @@ img {
   .container {
     max-width: 320px;
   }
+  .custom-moto {
+    margin-top: -2.5rem;
+  }
+  .c-moto-text {
+    padding: 0.5rem;
+  }
+}
+@media only screen and (max-width: 350px) {
 }
 
 /* deisgn canvas  */

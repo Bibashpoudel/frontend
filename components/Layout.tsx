@@ -62,17 +62,20 @@ export default function Layout({
 
     const navbar: any = document.getElementById("top-nav");
 
+    const btnNav: any = document.getElementById("c-nav");
+
     window.addEventListener("scroll", function () {
       scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-      if (scrollTop > lastScroll) {
-        navbar.style.display = "none";
+      if (scrollTop < lastScroll) {
+        navbar.style.top = "0px";
+        btnNav.style.marginTop = "1.5rem";
       } else {
-        navbar.style.display = "flex";
+        navbar.style.top = "-1.5rem";
+        btnNav.style.marginTop = "auto";
       }
-      if (scrollTop > 50) {
-        lastScroll = scrollTop;
-      }
+
+      lastScroll = scrollTop;
     });
 
     // return clean;
@@ -205,7 +208,10 @@ export default function Layout({
                 </Link>
               </div> */}
             </div>
-            <nav className="container pl-2 pr-2  m-auto flex h-14 items-center justify-between px-1 ">
+            <nav
+              id="c-nav"
+              className=" container pl-2 pr-2  m-auto flex h-14 items-center justify-between px-1 "
+            >
               <div className="flex flex-start text-black items-center ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -224,7 +230,7 @@ export default function Layout({
                   <Image
                     alt={"Pace Code"}
                     src="/images/logo.png"
-                    style={{ width: "6rem ", height: "3rem" }}
+                    style={{ width: "7rem ", height: "3.5rem" }}
                     width={100}
                     height={100}
                   />
