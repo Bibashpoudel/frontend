@@ -27,13 +27,13 @@ export default function Layout({
   const [openModal, setopenModal] = useState(false);
   const router = useRouter();
 
-  let lastScroll = 0;
-  let scrollTop = 0;
   const dragRef: any = useRef(null);
 
   const isClicked = useRef<boolean>(false);
 
   useEffect(() => {
+    let lastScroll = window.pageYOffset;
+
     // const drag = dragRef.current;
     // const onMouseDown = () => {
     //   isClicked.current = true;
@@ -64,22 +64,19 @@ export default function Layout({
 
     const btnNav: any = document.getElementById("c-nav");
 
-    window.addEventListener("scroll", function () {
-      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      if (scrollTop < lastScroll) {
+    window.onscroll = function () {
+      let scrollTop = window.pageYOffset;
+      if (lastScroll > scrollTop) {
         navbar.style.top = "0px";
-        btnNav.style.marginTop = "1.5rem";
+        btnNav.style.marginTop = "";
       } else {
         navbar.style.top = "-1.5rem";
-        btnNav.style.marginTop = "auto";
       }
-
       lastScroll = scrollTop;
-    });
+    };
 
     // return clean;
-  });
+  }, []);
 
   const nav = [
     {

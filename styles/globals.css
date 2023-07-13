@@ -40,15 +40,18 @@ a {
 /* design for nav bar */
 
 #top-nav {
-  width: 100%;
   position: fixed;
   top: 0;
+  width: 100%;
+  display: block;
+  transition: top 0.3s;
 }
 #top-nav div {
   float: left;
 }
 #c-nav {
   margin-top: 1.5rem;
+  transition: 2s;
 }
 /* 
   design for input
