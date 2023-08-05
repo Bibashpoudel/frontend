@@ -8,7 +8,7 @@ const dataArray = [
 ];
 
 const BlogCategoires = ({ onSelectionChange }: any) => {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([] as any);
 
   const toggleSelection = (index: any) => {
     console.log({ index });
