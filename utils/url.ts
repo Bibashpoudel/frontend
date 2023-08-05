@@ -17,6 +17,7 @@ function checkUrl() {
   console.log("url 2", URL2, check);
 
   if (check == "localhost") {
+    console.log("test009");
     URL1 = process.env.NEXT_PUBLIC_LOCAL_URL;
   } else {
     URL1 = process.env.NEXT_PUBLIC_SERVER_URL;

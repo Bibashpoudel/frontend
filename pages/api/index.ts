@@ -2,7 +2,7 @@ import axios from "axios";
 
 //stage.mengedegna.com
 const API = axios.create({
-  baseURL: process.env.API_ENDPOINT || "http://locahlost:5000",
+  baseURL: process.env.API_ENDPOINT || "http://locahlost:5001",
   headers: {
     "Content-Type": "application/json",
     // "Content-Type": "multipart/form-data",

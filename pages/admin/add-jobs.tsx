@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AdminLayout from "../../components/AdminLayout";
 import AddJobs from "./components/jobs/addJobs";
 import ListJobs from "./components/jobs/listJobs";
+import ListAdd from "./components/listadd";
 
 export async function getServerSideProps(context: any) {
   return {
@@ -16,32 +17,7 @@ export default function AddJob() {
   return (
     <AdminLayout title={"Admin"} description={"Admin site of PaceCode"}>
       <div className="container m-auto">
-        <div className="flex">
-          <div
-            className={
-              list
-                ? "p-4 cursor-pointer c-text font-bold"
-                : "p-4 cursor-pointer"
-            }
-            onClick={() => {
-              setList(true);
-              setAdd(false);
-            }}
-          >
-            List
-          </div>
-          <div
-            className={
-              add ? "p-4 cursor-pointer c-text font-bold" : "p-4 cursor-pointer"
-            }
-            onClick={() => {
-              setList(false);
-              setAdd(true);
-            }}
-          >
-            Add
-          </div>
-        </div>
+        <ListAdd setList={setList} setAdd={setAdd}></ListAdd>
         {add && <AddJobs></AddJobs>}
         {list && <ListJobs list={list}></ListJobs>}
       </div>

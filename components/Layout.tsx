@@ -106,7 +106,7 @@ export default function Layout({
       <Head>
         <title>{title ? title : "Pace Code"}</title>
         <meta name="msvalidate.01" content="C43EC445421B3EB12F4F4699ACFC8609" />
-        <meta property="og:title" content={ogTitle ? ogTitle : "Pace Code"} />
+        //{" "}
         <meta
           content="Pace Code"
           name="author"
@@ -132,19 +132,17 @@ export default function Layout({
           content="private"
           style={{ userSelect: "text" }}
         ></meta>
+        <meta name="yandex-verification" content="cc209aa9466505d8" />
         {/* <meta
           httpEquiv="Content-Security-Policy"
           content={`default-src 'self'; img-src https://*; child-src 'none';`}
         /> */}
-
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
           style={{ userSelect: "text" }}
         ></meta>
-
         <link rel="icon" href="/header.png" type="image/x-icon"></link>
-
         <Script
           dangerouslySetInnerHTML={{
             __html: `(function(h,o,t,j,a,r){
@@ -157,6 +155,7 @@ export default function Layout({
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`,
           }}
         />
+        ‍
       </Head>
       {loading && (
         <>

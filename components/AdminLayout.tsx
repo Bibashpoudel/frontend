@@ -21,6 +21,11 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import PolicyIcon from "@mui/icons-material/Policy";
+import GavelIcon from "@mui/icons-material/Gavel";
+import SpeakerNotesIcon from "@mui/icons-material/SpeakerNotes";
 
 export default function AdminLayout({
   title,
@@ -29,8 +34,18 @@ export default function AdminLayout({
   loading,
 }: any) {
   const [sidebar, setSideBar] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [count, setCount] = useState(0);
   const router = useRouter();
   const path = router.pathname.split("#");
+
+  const arrayPath = path[0].split("/");
+  console.log(arrayPath);
+
+  if (arrayPath[2] == "settings" && count === 0) {
+    setIsOpen(true);
+    setCount(count + 1);
+  }
 
   const local = getLocal();
 
@@ -47,6 +62,7 @@ export default function AdminLayout({
         type: USER_SIGNOUT,
       });
     }
+    console.log(path);
     router.push(`${path}`);
   }
 
@@ -56,7 +72,7 @@ export default function AdminLayout({
         <title>{title ? title + " - Pace Code" : "Pace Code"}</title>
 
         <meta
-          content="Gurzu"
+          content="Pace Code"
           name="author"
           style={{ userSelect: "text" }}
         ></meta>
@@ -110,7 +126,7 @@ export default function AdminLayout({
               />{" "}
             </div>
             <div className="">
-              <ul className="-ml-6">
+              <ul className=" list-none">
                 {
                   [
                     {
@@ -130,8 +146,45 @@ export default function AdminLayout({
                     },
                     {
                       icon: <SettingsIcon></SettingsIcon>,
-                      name: "settings ",
-                      path: "/admin/settings",
+                      name: "Settings",
+                      path: null,
+                      children: [
+                        {
+                          icon: <SettingsIcon></SettingsIcon>,
+                          name: "Privacy & Policy",
+                          path: "/admin/settings/privacy&policy",
+                        },
+                        {
+                          icon: <SettingsIcon></SettingsIcon>,
+                          name: "Terms & conditions",
+                          path: "/admin/settings/terms&condition",
+                        },
+                        {
+                          icon: <SettingsIcon></SettingsIcon>,
+                          name: "Testonominial",
+                          path: "/admin/settings/testonominial",
+                        },
+                        {
+                          icon: <SettingsIcon></SettingsIcon>,
+                          name: "Our Expert",
+                          path: "/admin/settings/our-expert",
+                        },
+                        {
+                          icon: <SettingsIcon></SettingsIcon>,
+                          name: "Our services",
+                          path: "/admin/settings/our-services",
+                        },
+                        {
+                          icon: <SettingsIcon></SettingsIcon>,
+                          name: "Why We",
+                          path: "/admin/settings/why-we",
+                        },
+                        {
+                          icon: <SettingsIcon></SettingsIcon>,
+                          name: "Our Industry",
+                          path: "/admin/settings/our-industry",
+                        },
+                      ],
                     },
                     {
                       icon: <ArticleIcon></ArticleIcon>,
@@ -156,32 +209,110 @@ export default function AdminLayout({
                   ].map((a: any, index: any) => (
                     <span key={index}>
                       {sidebar ? (
-                        <li
-                          className={
-                            router.pathname == `${a.path}`
-                              ? "pl-10 p-2 bg-primary cursor-pointer "
-                              : "pl-10 p-2 cursor-pointer "
-                          }
-                          onClick={() => logout(a.path)}
-                        >
-                          <span
-                            className={
-                              router.pathname == `${a.path}`
-                                ? "c-white "
-                                : "c-text"
-                            }
-                          >
-                            {" "}
-                            {a.icon}
-                          </span>
-                          <span className="max-sm:hidden"> {a.name}</span>
-                        </li>
+                        <>
+                          {a.path == null ? (
+                            <>
+                              <li
+                                className="p-2 cursor-pointer hover:bg-sky-200"
+                                onClick={() => {
+                                  isOpen ? setIsOpen(false) : setIsOpen(true);
+                                  console.log("test");
+                                }}
+                              >
+                                <span
+                                  className={isOpen ? "c-white " : "c-text"}
+                                >
+                                  {" "}
+                                  {a.icon}
+                                </span>
+                                <span
+                                  className={`
+                                   ${
+                                     isOpen
+                                       ? "max-sm:hidden font-bold "
+                                       : "max-sm:hidden c-text"
+                                   }`}
+                                >
+                                  {" "}
+                                  {a.name}
+                                </span>
+                                <span className="float-right">
+                                  {isOpen ? (
+                                    <KeyboardArrowUpIcon></KeyboardArrowUpIcon>
+                                  ) : (
+                                    <KeyboardArrowDownIcon></KeyboardArrowDownIcon>
+                                  )}
+                                </span>
+                              </li>
+                              {isOpen && (
+                                <>
+                                  {a.children.map((CP: any) => (
+                                    <span className="flex ml-4">
+                                      {router.pathname == `${CP.path}` && (
+                                        <div className="linehover"></div>
+                                      )}
+                                      <li
+                                        className={
+                                          router.pathname == `${CP.path}`
+                                            ? " p-2 cursor-pointer testPath list-none flex bg-sky-400 w-full rounded-r-xl text-white"
+                                            : "p-2 cursor-pointer hover:bg-sky-200 list-none w-full "
+                                        }
+                                        onClick={() => logout(CP.path)}
+                                      >
+                                        <span
+                                          className={
+                                            router.pathname == `${CP.path}`
+                                              ? "text-violet-900"
+                                              : "c-text "
+                                          }
+                                        >
+                                          {" "}
+                                          {CP.icon}
+                                        </span>
+                                        <span className="max-sm:hidden ">
+                                          {" "}
+                                          {CP.name}
+                                        </span>
+                                      </li>
+                                    </span>
+                                  ))}
+                                </>
+                              )}
+                            </>
+                          ) : (
+                            <span className="flex ml-2">
+                              {router.pathname == `${a.path}` && (
+                                <div className="linehover"></div>
+                              )}
+                              <li
+                                className={
+                                  router.pathname == `${a.path}`
+                                    ? "p-2 cursor-pointer w-full bg-sky-400 rounded-r-xl text-white"
+                                    : "p-2 cursor-pointer hover:bg-sky-200 w-full"
+                                }
+                                onClick={() => logout(a.path)}
+                              >
+                                <span
+                                  className={
+                                    router.pathname == `${a.path}`
+                                      ? "text-violet-900"
+                                      : "c-text"
+                                  }
+                                >
+                                  {" "}
+                                  {a.icon}
+                                </span>
+                                <span className="max-sm:hidden"> {a.name}</span>
+                              </li>
+                            </span>
+                          )}
+                        </>
                       ) : (
                         <li
                           className={
                             router.pathname == `${a.path}`
-                              ? "pl-10 p-2 bg-primary cursor-pointer "
-                              : "pl-10 p-2 cursor-pointer "
+                              ? "p-2  cursor-pointer "
+                              : "p-2 cursor-pointer hover:bg-sky-200"
                           }
                           onClick={() => logout(a.path)}
                         >

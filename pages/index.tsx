@@ -10,6 +10,7 @@ import { Pagination, Navigation } from "swiper";
 import Card from "../components/Card";
 
 import home from "../public/images/home.png";
+import { Helmet } from "react-helmet";
 
 export default function Home(): JSX.Element {
   const services = [
@@ -225,13 +226,18 @@ export default function Home(): JSX.Element {
       logo: "/images/logo.png",
     },
   ];
+
+  const description =
+    "Facilitates business in developing software. We specialized in custom software, web and mobile applications, cyber security,  and cloud engineering.";
+  const title = "Exceeding, Expectations in Software Development | Pace Code";
+  const type = "website";
+  const owner = "Pace Code";
+  const url = "https://www.pacecode.com.np";
   return (
     <>
       <Layout
-        title={"Exceeding, Expectations in Software Development | Pace Code"}
-        description={
-          "Pace Code facilitates business owners in developing software products. We specialized in the creation of custom software development, enterprise system development, web and mobile applications, cyber security,  and cloud engineering."
-        }
+        title={title}
+        description={description}
         image={home}
         shortDesc={{
           title:
@@ -240,6 +246,40 @@ export default function Home(): JSX.Element {
         }}
         ogTitle={"Pace Code | Home"}
       >
+        <Helmet>
+          <div itemScope itemType="https://schema.org/Organization">
+            <a itemProp="url" href="https://www.pacecode.com.np/">
+              Pace Code
+            </a>
+            <img
+              itemProp="logo"
+              src="https://pacecode.com.np/image/assets/logo.png"
+            />
+          </div>
+          ‍<title> {title}</title>
+          <meta name="title" content={title}></meta>
+          <meta name="description" content={description} />
+          {/* for facebook */}
+          <meta name="title" property="og:title" content={title}></meta>
+          <meta
+            name="description"
+            property="og:description"
+            content={description}
+          />
+          <meta name="url" property="og:url" content={url} />
+          <meta name="type" property="og:type" content={type} />
+          <meta property="og:image" content="url_to_image" />
+          <meta property="og:site_name" content="Pace Code" />
+          <meta property="og:locale" content="en_US" />
+          <meta property="fb:app_id" content="ID_APP_FACEBOOK" />
+          {/* for twiter */}
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:site" content={owner} />
+          <meta name="twitter:creator" content={owner} />
+          <meta name="twitter:title" content={title} />
+          <meta name="twitter:description" content={description} />
+          <meta name="twitter:image" content="url_to_image" />
+        </Helmet>
         <div className="">
           <div className="p-4 flex justify-center ">
             <div className="font-bold text-3xl " style={{ color: "#0279b1" }}>

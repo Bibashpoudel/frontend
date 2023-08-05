@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { contactUS } from "../redux/actions/news.Action";
 import imgContact from "../public/images/contactus.jpg";
 import { CONTACT_US_RESET } from "../redux/constant/news.constants";
+import { Helmet } from "react-helmet";
 
 export default function Contactus() {
   const {
@@ -42,6 +43,13 @@ export default function Contactus() {
       });
     }
   }, [success]);
+
+  const description =
+    "We would like to connect with you. Tell us a little about yourself, your project, and the best way to contact you. We'll get back to you right away.";
+  const title = "Tell us a little about yourself, and your project | Pace Code";
+  const type = "website";
+  const owner = "Pace Code";
+  const url = "https://www.pacecode.com.np/contact-us";
   return (
     <Layout
       title={"Tell us a little about yourself, and your project | Pace Code"}
@@ -55,6 +63,40 @@ export default function Contactus() {
       image={imgContact}
       loading={loading}
     >
+      <Helmet>
+        <div itemScope itemType="https://schema.org/Organization">
+          <a itemProp="url" href="https://www.pacecode.com.np/contact-us">
+            Pace Code || Contact Us
+          </a>
+          <img
+            itemProp="logo"
+            src="https://pacecode.com.np/image/assets/logo.png"
+          />
+        </div>
+        ‍<title> {title}</title>
+        <meta name="title" content={title}></meta>
+        <meta name="description" content={description} />
+        {/* for facebook */}
+        <meta name="title" property="og:title" content={title}></meta>
+        <meta
+          name="description"
+          property="og:description"
+          content={description}
+        />
+        <meta name="url" property="og:url" content={url} />
+        <meta name="type" property="og:type" content={type} />
+        <meta property="og:image" content="url_to_image" />
+        <meta property="og:site_name" content="Pace Code" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="fb:app_id" content="ID_APP_FACEBOOK" />
+        {/* for twiter */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content={owner} />
+        <meta name="twitter:creator" content={owner} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content="url_to_image" />
+      </Helmet>
       <div className="contact ">
         <div className="container pl-2 pr-2  flex max-md:flex-col m-auto containers">
           <div className="contactInfo ">

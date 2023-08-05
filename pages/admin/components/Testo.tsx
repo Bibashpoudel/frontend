@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import ListAdd from "./listadd";
 export async function getServerSideProps(context: any) {
   return {
     props: {}, // will be passed to the page component as props
@@ -21,26 +22,7 @@ export default function Testo() {
   };
   return (
     <div>
-      <div className="flex">
-        <div
-          className="p-4 cursor-pointer"
-          onClick={() => {
-            setList(true);
-            setAdd(false);
-          }}
-        >
-          List
-        </div>
-        <div
-          className="p-4 cursor-pointer"
-          onClick={() => {
-            setList(false);
-            setAdd(true);
-          }}
-        >
-          add
-        </div>
-      </div>
+      <ListAdd setList={setList} setAdd={setAdd}></ListAdd>
       {list && <div>list</div>}
       {add && (
         <div className="flex flex-col items-center w-full">
@@ -165,7 +147,7 @@ export default function Testo() {
                 )}
               </div>
               <div className="mb-4">
-                <div>Client Name</div>
+                <div>Client Message</div>
                 <textarea
                   {...register("message", {
                     required: "Please enter Client Message ",

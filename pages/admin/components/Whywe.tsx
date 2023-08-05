@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import ListAdd from "./listadd";
 export async function getServerSideProps(context: any) {
   return {
     props: {}, // will be passed to the page component as props
@@ -19,26 +20,7 @@ export default function Whywe() {
   const addWhywe = () => {};
   return (
     <div>
-      <div className="flex">
-        <div
-          className="p-4 cursor-pointer"
-          onClick={() => {
-            setList(true);
-            setAdd(false);
-          }}
-        >
-          List
-        </div>
-        <div
-          className="p-4 cursor-pointer"
-          onClick={() => {
-            setList(false);
-            setAdd(true);
-          }}
-        >
-          add
-        </div>
-      </div>
+      <ListAdd setList={setList} setAdd={setAdd}></ListAdd>
       {list && <div>list</div>}
       {add && (
         <div>
