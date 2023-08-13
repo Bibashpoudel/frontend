@@ -7,6 +7,7 @@ import {
   APPLY_JOB_SUCCESS,
   JOB_ADD_FAIL,
   JOB_ADD_LOADING,
+  JOB_ADD_RESET,
   JOB_ADD_SUCCESS,
   JOB_DETAILS_FAIL,
   JOB_DETAILS_LOADING,
@@ -90,6 +91,8 @@ export const addjobReducer = (state = {}, action: any) => {
         loading: false,
         error: action.payload,
       };
+    case JOB_ADD_RESET:
+      return {};
     default:
       return { state };
   }

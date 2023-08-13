@@ -17,7 +17,6 @@ export default function Blog() {
   const handleSelectionChange = (selectedItems: any) => {
     setSelectedItems(selectedItems);
   };
-  console.log(selectedItems);
 
   return (
     <>

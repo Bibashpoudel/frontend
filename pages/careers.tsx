@@ -10,18 +10,25 @@ import { useDispatch } from "react-redux";
 import { getJobs } from "../redux/actions/jobs.Action";
 import Link from "next/link";
 import { Helmet } from "react-helmet";
+export async function getServerSideProps() {
+  let loading: boolean = true;
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_VALID_URL}/jobs/get-jobs/`
+  );
 
-export default function Careers(): JSX.Element {
-  const jobsList = useSelector((state: RootState) => state.jobsList);
-  const { loading, error, jobs }: any = jobsList;
+  const data = await response.json();
+  loading = false;
 
-  const [job, setJob] = useState([]);
+  return {
+    props: {
+      Jobs: data,
+      loading: loading,
+    },
+  };
+}
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getJobs() as any);
-  }, []);
+export default function Careers({ Jobs, loading }: any): JSX.Element {
+  const jobs = Jobs;
 
   const description =
     "Do you have a strong desire to produce influential digital products? Join a great team of top engineers and innovative thinkers to create top-notch products.";
@@ -103,7 +110,10 @@ export default function Careers(): JSX.Element {
                   <div className="border rounded p-4 mt-4 hover:scale-105 duration-1000 hover:shadow">
                     <div>
                       <span className="text-lg font-bold c-text">
-                        {a.title} - {a.stack}
+                        <h1>
+                          {" "}
+                          {a.title} - {a.stack}
+                        </h1>
                       </span>
                     </div>
                     <div className="flex items-center">

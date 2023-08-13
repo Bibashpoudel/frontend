@@ -13,6 +13,7 @@ export default function Apply() {
   const [apply, setApply] = useState("") as any;
 
   const applyjob = useSelector((state: RootState) => state.applyjob);
+  const [fileSizeError, setFileSizeError] = useState("");
 
   const { loading, error, success }: any = applyjob;
 
@@ -30,6 +31,23 @@ export default function Apply() {
     dispatch(
       applyJobAction(fullName, email, phone, intro, file[0], apply) as any
     );
+  };
+
+  const handleFileChange = (event: any) => {
+    const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      const fileSizeInMB = selectedFile.size / (1024 * 1024); // Convert to MB
+
+      const maxSizeInMB = 5; // Maximum allowed file size in MB
+      if (fileSizeInMB > maxSizeInMB) {
+        setFileSizeError(
+          `File size exceeds the maximum limit of ${maxSizeInMB} MB.`
+        );
+        event.target.value = ""; // Clear the file input
+      } else {
+        setFileSizeError("");
+      }
+    }
   };
 
   useEffect(() => {
@@ -167,6 +185,7 @@ export default function Apply() {
                     },
                   })}
                   accept=".pdf"
+                  onChange={handleFileChange}
                   placeholder="add your Cv"
                   className=" w-full rounded-md border bordder-[#E9EDF4] py-3 px-5 bg-[#FCFDFE]text-base text-body-color placeholder-[#ACB6BE]
                         outline-none
@@ -179,6 +198,11 @@ export default function Apply() {
                     {(errors.file as any).message}
                   </div>
                 )}
+                <div>
+                  {fileSizeError && (
+                    <p style={{ color: "red" }}>{fileSizeError}</p>
+                  )}
+                </div>
               </div>
               <div className="mb-10">
                 <input

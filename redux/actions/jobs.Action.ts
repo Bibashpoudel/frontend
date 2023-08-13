@@ -25,12 +25,10 @@ const token = getLocal();
 const URL = checkUrl();
 
 export const getJobs = () => async (dispatch: any) => {
-  console.log("action run");
   dispatch({
     type: JOB_LIST_LOADING,
   });
   try {
-    console.log("action run 2");
     const { data }: any = await axios.get(`${URL}/jobs/get-jobs`, {
       headers: {
         "Access-Control-Allow-Methods": "*",
@@ -90,7 +88,6 @@ export const getJobDetails = (slug: any) => async (dispatch: any) => {
   }
 };
 export const getadminJobs = (page: any, size: any) => async (dispatch: any) => {
-  console.log("action run");
   dispatch({
     type: JOB_LIST_LOADING,
   });
@@ -125,6 +122,37 @@ export const getadminJobs = (page: any, size: any) => async (dispatch: any) => {
   }
 };
 
+export const getAdminJobsDetails = (id: any) => async (dispatch: any) => {
+  dispatch({
+    type: JOB_DETAILS_LOADING,
+  });
+  try {
+    const { data }: any = await axios.get(`${URL}/jobs/admin/get-job/:${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: `Bearer ${token?.access_token}`,
+      },
+    });
+
+    dispatch({
+      type: JOB_DETAILS_SUCCESS,
+      payload: data,
+    });
+  } catch (error: any) {
+    dispatch({
+      type: JOB_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.response.data.detail
+          ? error.response.data.detail
+          : error.message
+          ? error.message
+          : error,
+    });
+  }
+};
 export const addJob =
   (title: any, stack: any, content: any, isPreview: any, slug: any) =>
   async (dispatch: any) => {
@@ -170,17 +198,29 @@ export const addJob =
   };
 
 export const updateJob =
-  (id: any, content: any, ispreview: any) => async (dispatch: any) => {
+  (
+    id: any,
+    content: string | null,
+    ispreview: boolean | null,
+    title: string | null,
+    slug: string | null,
+    stack: string | null
+  ) =>
+  async (dispatch: any) => {
     dispatch({
       type: UPDATE_JOB_LOADING,
-      payload: { id, content, ispreview },
+      payload: { id, content, ispreview, title, slug, stack },
     });
     try {
+      console.log("test", id, content, ispreview);
       const { data } = await axios.put(
         `${URL}/jobs/update/${id}`,
         {
           isPreview: ispreview,
           content: content,
+          title: title,
+          slug: slug,
+          stack: stack,
         },
         {
           headers: {
@@ -210,18 +250,11 @@ export const updateJob =
   };
 
 export const applyJobAction =
-  (
-    fullName: any,
-    email: any,
-    phone: any,
-    intro: any,
-    file: any,
-    position: any
-  ) =>
+  (fullName: any, email: any, phone: any, intro: any, file: any, apply: any) =>
   async (dispatch: any) => {
     dispatch({
       type: APPLY_JOB_LOADING,
-      payload: { fullName, email, phone, intro, file, position },
+      payload: { fullName, email, phone, intro, file, position: apply },
     });
 
     try {
@@ -233,7 +266,7 @@ export const applyJobAction =
           phone,
           intro,
           file,
-          position,
+          position: apply,
         },
         {
           headers: {
@@ -243,7 +276,7 @@ export const applyJobAction =
           },
         }
       );
-      console.log(data);
+
       dispatch({
         type: APPLY_JOB_SUCCESS,
         payload: data,

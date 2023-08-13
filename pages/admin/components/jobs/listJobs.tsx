@@ -1,14 +1,18 @@
+import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
 import Pagination from "../../../../components/pagination";
 import { getadminJobs, updateJob } from "../../../../redux/actions/jobs.Action";
 import { UPDATE_JOB_RESET } from "../../../../redux/constant/jobs.constants";
 import abc from "../../../../utils/abc";
+import getLocal from "../../../../utils/getlocal";
 import { RootState } from "../../../../utils/store";
 
-export default function ListJobs(list: any) {
+export default function ListJobs({ setId, setAdd, setList }: any) {
   const [page, setPage] = useState();
   const [size, setSize] = useState();
   const changePage = (val: any) => {
@@ -16,7 +20,6 @@ export default function ListJobs(list: any) {
   };
 
   const changeSize = (value: any) => {
-    console.log(value);
     setSize(value);
   };
   const router = useRouter();
@@ -33,22 +36,19 @@ export default function ListJobs(list: any) {
 
   const update = (e: any, id: any, value: any) => {
     e.preventDefault();
-    console.log(e.target.value);
+
     let abc: boolean;
     if (value == true) {
       abc = false;
     } else {
       abc = true;
     }
-    console.log(abc, id);
 
-    dispatch(updateJob(id, null, abc) as any);
+    dispatch(updateJob(id, null, abc, null, null, null) as any);
   };
 
   useEffect(() => {
-    if (list) {
-      dispatch(getadminJobs(page ? page : 1, size ? size : 10) as any);
-    }
+    dispatch(getadminJobs(page ? page : 1, size ? size : 10) as any);
     if (u_success) {
       dispatch(getadminJobs(page ? page : 1, size ? size : 10) as any);
       dispatch({
@@ -60,6 +60,34 @@ export default function ListJobs(list: any) {
     console.log("Unauthorized");
     abc();
   }
+  const token = getLocal();
+
+  const deleteJobs = (id: any) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await axios.delete(
+          `${process.env.NEXT_PUBLIC_VALID_URL}/jobs/admin/delete/${id}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+              Authorization: `Bearer ${token?.access_token}`,
+            },
+          }
+        );
+        Swal.fire("Deleted!", "Jobs has been deleted.", "success");
+        dispatch(getadminJobs(page ? page : 1, size ? size : 10) as any);
+      }
+    });
+  };
 
   return (
     <div>
@@ -70,23 +98,25 @@ export default function ListJobs(list: any) {
           {jobs?.data.map((a: any, index: any) => (
             <div
               key={index}
-              className="border rounded p-4 mt-4 hover:shadow flex justify-between"
+              className="border rounded p-4 mt-4 hover:shadow flex justify-between sm:flex-wrap"
             >
               <div>
                 <span className="text-lg font-bold c-text">
                   {a.title} - {a.stack}
                 </span>
               </div>
-              <div className="flex ">
-                <div className="flex items-end float-right">
-                  <div className="flex h-5 items-center ">
+              <div className="flex justify-between items-center">
+                <div className="flex items-end float-right mr-2">
+                  <div
+                    className="flex h-5 items-center cursor-pointer"
+                    onClick={(e) => update(e, a._id, a.isPreview)}
+                  >
                     <input
                       id="preview"
                       type="checkbox"
                       defaultChecked={a.isPreview}
-                      onClick={(e) => update(e, a._id, a.isPreview)}
                       name="preview"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
                     />
                   </div>
                   <div className="ml-3 text-sm">
@@ -97,6 +127,17 @@ export default function ListJobs(list: any) {
                       Preview
                     </label>
                   </div>
+                </div>
+                <Link href={`/admin/jobs/${a._id}`}>
+                  <div className="ml-3 text-sm text-white bg-green-500 p-2 rounded-md cursor-pointer">
+                    Edit
+                  </div>
+                </Link>
+                <div
+                  className="ml-3 text-sm text-white bg-red-400 p-2 rounded-md cursor-pointer"
+                  onClick={() => deleteJobs(a._id)}
+                >
+                  Delete
                 </div>
               </div>
             </div>

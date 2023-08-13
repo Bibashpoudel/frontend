@@ -1,24 +1,37 @@
+import axios from "axios";
+import { getURL } from "next/dist/shared/lib/utils";
 import dynamic from "next/dynamic";
-import React, { useEffect, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { set, useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import slugify from "slugify";
 
 import Swal from "sweetalert2";
-import { addJob } from "../../../../redux/actions/jobs.Action";
+import {
+  addJob,
+  getAdminJobsDetails,
+  getJobDetails,
+} from "../../../../redux/actions/jobs.Action";
+import { JOB_ADD_RESET } from "../../../../redux/constant/jobs.constants";
 import abc from "../../../../utils/abc";
+import getLocal from "../../../../utils/getlocal";
 import { RootState } from "../../../../utils/store";
+import { checkUrl } from "../../../../utils/url";
 
-export default function AddJobs() {
+export default function AddJobs({ id }: any) {
   const editor = useRef(null);
   const [content, setContent] = useState("");
+  const [formData, setFormData] = useState({}) as any;
   const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
+  const jobId = id;
+
   const {
     handleSubmit,
     register,
     setValue,
     formState: { errors },
+    reset,
   } = useForm();
   const dispatch = useDispatch();
   const addJobs = useSelector((state: RootState) => state.addJobs);
@@ -37,11 +50,49 @@ export default function AddJobs() {
   useEffect(() => {
     if (success) {
       Swal.fire("Successfull!", "Your message has been delivered!", "success");
+      reset();
       setContent("");
-      setValue("title", "");
-      setValue("stack", "");
+      dispatch({
+        type: JOB_ADD_RESET,
+      });
     }
   }, []);
+  const URL = checkUrl();
+  console.log("url", URL);
+  const token = getLocal();
+  useMemo(async () => {
+    if (jobId) {
+      const fetchData = async () => {
+        try {
+          const response = await fetch(
+            `http://localhost:5001/api/v1/jobs/get-job/${jobId}`, // Remove the extra curly brace here
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token?.access_token}`,
+              },
+            }
+          );
+
+          if (response.ok) {
+            const responseData = await response.json(); // Add await here
+            setFormData(responseData);
+          } else {
+            console.log(
+              "Response not OK:",
+              response.status,
+              response.statusText
+            );
+          }
+        } catch (error) {
+          console.log("Error fetching data:", error);
+        }
+      };
+
+      fetchData();
+      console.log(fetchData());
+    }
+  }, [jobId, token]);
   if (error === "Unauthorized") {
     console.log("Unauthorized");
     abc();
@@ -57,6 +108,7 @@ export default function AddJobs() {
               type="checkbox"
               {...register("preview", {})}
               name="preview"
+              value={formData.isPreview}
               className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
             />
           </div>
@@ -75,6 +127,7 @@ export default function AddJobs() {
               required: "Please enter the Job Title",
             })}
             placeholder="Title of the Job"
+            value={formData.title}
             className=" w-full rounded-md border bordder-[#E9EDF4] py-3 px-5 bg-[#FCFDFE]text-base text-body-color placeholder-[#ACB6BE]
                 outline-none
                 focus-visible:shadow-none
@@ -93,6 +146,7 @@ export default function AddJobs() {
               required: "Please enter technology required",
             })}
             placeholder="Job Stack used"
+            value={formData.stack}
             className=" w-full rounded-md border bordder-[#E9EDF4] py-3 px-5 bg-[#FCFDFE]text-base text-body-color placeholder-[#ACB6BE]
                 outline-none
                 focus-visible:shadow-none

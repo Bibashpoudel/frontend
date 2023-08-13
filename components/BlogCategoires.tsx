@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import data from "../utils/dats";
 
 const dataArray = [
@@ -20,7 +20,9 @@ const BlogCategoires = ({ onSelectionChange }: any) => {
     onSelectionChange(selectedItems);
   };
 
-  console.log(selectedItems);
+  useEffect(() => {
+    //getBlogC
+  }, []);
 
   return (
     <div className="flex items-center justify-center flex-col mt-4">

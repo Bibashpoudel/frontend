@@ -216,7 +216,6 @@ export default function AdminLayout({
                                 className="p-2 cursor-pointer hover:bg-sky-200"
                                 onClick={() => {
                                   isOpen ? setIsOpen(false) : setIsOpen(true);
-                                  console.log("test");
                                 }}
                               >
                                 <span

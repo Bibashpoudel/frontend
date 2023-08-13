@@ -12,20 +12,21 @@ import career from "../public/images/career.jpg";
 
 export async function getServerSideProps({ params }: any) {
   const response = await fetch(
-    `http://localhost:5001/api/v1/jobs/get-job/${params.slug}`
+    `${process.env.NEXT_PUBLIC_VALID_URL}/jobs/get-job/${params.slug}`
   );
+
   const data = await response.json();
 
   return {
     props: {
-      jobDetails: data,
+      details: data,
     },
   };
 }
-export default function jobDetails({ jobDetails }: any) {
+export default function jobDetails({ details }: any) {
   const router = useRouter();
-  const job = jobDetails.data;
-  console.log(job);
+
+  const job = details.data;
 
   const description =
     "Do you have a strong desire to produce influential digital products? Join a great team of top engineers and innovative thinkers to create top-notch products.";
@@ -102,10 +103,7 @@ export default function jobDetails({ jobDetails }: any) {
           <button
             className="button-primary p-4 max-md:p-2"
             onClick={() => {
-              sessionStorage.setItem(
-                "Apply",
-                `${job?.data?.title}-${job.stack}`
-              );
+              sessionStorage.setItem("Apply", `${job?.title}-${job.stack}`);
               router.push(`apply/${job.slug}`);
             }}
           >
