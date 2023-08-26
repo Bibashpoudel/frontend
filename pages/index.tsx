@@ -215,16 +215,16 @@ export default function Home(): JSX.Element {
       companyName: "Barha Thari",
       logo: "/images/logo.png",
     },
-    {
-      message:
-        "Pace Code has helped us designing and devloping our idea to business logic. The team had wide range of the standarlization and clear vision of customer thinking and preference. we are glad to be the part of their service.",
-      position: "Co-founder",
-      additionalPosition: "CA",
-      name: "Rohit Lamichanne",
-      img: "/images/rohit.jpeg",
-      companyName: "Sevenoath",
-      logo: "/images/logo.png",
-    },
+    // {
+    //   message:
+    //     "Pace Code has helped us designing and devloping our idea to business logic. The team had wide range of the standarlization and clear vision of customer thinking and preference. we are glad to be the part of their service.",
+    //   position: "Co-founder",
+    //   additionalPosition: "CA",
+    //   name: "Rohit Lamichanne",
+    //   img: "/images/rohit.jpeg",
+    //   companyName: "Sevenoath",
+    //   logo: "/images/logo.png",
+    // },
   ];
 
   const description =
